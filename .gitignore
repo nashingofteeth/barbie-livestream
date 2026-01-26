@@ -1,0 +1,31 @@
+# Owncast data directory
+data/
+!data/public/
+!data/public/images/
+!data/public/images/README.md
+!data/emoji/
+!data/emoji/EMOJI-GUIDE.md
+
+# Owncast database and config
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Backup files
+*.tar.gz
+*.zip
+backups/
