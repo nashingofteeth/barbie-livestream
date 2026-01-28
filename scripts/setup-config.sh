@@ -224,6 +224,17 @@ if [ -n "$HIDE_VIEWER_COUNT" ]; then
     api_call "hideviewercount" "$HIDE_VIEWER_COUNT" "viewer count visibility"
 fi
 
+DIRECTORY_ENABLED=$(echo "$CONFIG" | grep '"directoryEnabled"' | sed 's/.*: \([^,]*\).*/\1/')
+if [ -n "$DIRECTORY_ENABLED" ]; then
+    api_call "directoryenabled" "$DIRECTORY_ENABLED" "directory listing"
+fi
+
+SERVER_URL=$(echo "$CONFIG" | grep '"serverUrl"' | sed 's/.*: "\(.*\)".*/\1/' | sed 's/",$//')
+if [ -n "$SERVER_URL" ]; then
+    SERVER_URL_ESCAPED=$(json_escape "$SERVER_URL")
+    api_call "serverurl" "\"$SERVER_URL_ESCAPED\"" "server URL"
+fi
+
 CHAT_DISABLED=$(echo "$CONFIG" | grep '"chatDisabled"' | sed 's/.*: \([^,]*\).*/\1/')
 if [ -n "$CHAT_DISABLED" ]; then
     api_call "chat/disable" "$CHAT_DISABLED" "chat status"
@@ -233,6 +244,76 @@ CHAT_JOIN=$(echo "$CONFIG" | grep '"chatJoinMessagesEnabled"' | sed 's/.*: \([^,
 if [ -n "$CHAT_JOIN" ]; then
     api_call "chat/joinmessagesenabled" "$CHAT_JOIN" "chat join messages"
 fi
+
+CHAT_ESTABLISHED=$(echo "$CONFIG" | grep '"chatEstablishedUsersOnlyMode"' | sed 's/.*: \([^,]*\).*/\1/')
+if [ -n "$CHAT_ESTABLISHED" ]; then
+    api_call "chat/establishedusermode" "$CHAT_ESTABLISHED" "established user mode"
+fi
+
+SPAM_PROTECTION=$(echo "$CONFIG" | grep '"spamProtectionEnabled"' | sed 's/.*: \([^,]*\).*/\1/')
+if [ -n "$SPAM_PROTECTION" ]; then
+    api_call "chat/spamprotectionenabled" "$SPAM_PROTECTION" "spam protection"
+fi
+
+SLUR_FILTER=$(echo "$CONFIG" | grep '"slurFilterEnabled"' | sed 's/.*: \([^,]*\).*/\1/')
+if [ -n "$SLUR_FILTER" ]; then
+    api_call "chat/slurfilterenabled" "$SLUR_FILTER" "slur filter"
+fi
+
+DISABLE_SEARCH=$(echo "$CONFIG" | grep '"disableSearchIndexing"' | sed 's/.*: \([^,]*\).*/\1/')
+if [ -n "$DISABLE_SEARCH" ]; then
+    api_call "disablesearchindexing" "$DISABLE_SEARCH" "search indexing"
+fi
+
+# Forbidden Usernames (as array) - always send, even if empty
+FORBIDDEN_LINE=$(echo "$CONFIG" | grep '"forbiddenUsernames"')
+if echo "$FORBIDDEN_LINE" | grep -q '\[\]'; then
+    # Empty array
+    FORBIDDEN_ARRAY="[]"
+else
+    # Extract usernames between the brackets
+    FORBIDDEN=$(echo "$CONFIG" | grep -A 20 '"forbiddenUsernames"' | sed -n '/\[/,/\]/p' | grep -o '"[^"]*"' | grep -v "forbiddenUsernames" | sed 's/"//g' | tr '\n' ',' | sed 's/,$//')
+    if [ -n "$FORBIDDEN" ]; then
+        # Convert to JSON array format
+        FORBIDDEN_ARRAY="["
+        IFS=',' read -ra FORBIDDEN_ARR <<< "$FORBIDDEN"
+        for i in "${!FORBIDDEN_ARR[@]}"; do
+            if [ $i -gt 0 ]; then
+                FORBIDDEN_ARRAY="$FORBIDDEN_ARRAY,"
+            fi
+            FORBIDDEN_ARRAY="$FORBIDDEN_ARRAY\"${FORBIDDEN_ARR[$i]}\""
+        done
+        FORBIDDEN_ARRAY="$FORBIDDEN_ARRAY]"
+    else
+        FORBIDDEN_ARRAY="[]"
+    fi
+fi
+api_call "chat/forbiddenusernames" "$FORBIDDEN_ARRAY" "forbidden usernames"
+
+# Suggested Usernames (as array) - always send, even if empty
+SUGGESTED_LINE=$(echo "$CONFIG" | grep '"suggestedUsernames"')
+if echo "$SUGGESTED_LINE" | grep -q '\[\]'; then
+    # Empty array
+    SUGGESTED_ARRAY="[]"
+else
+    # Extract usernames between the brackets
+    SUGGESTED=$(echo "$CONFIG" | grep -A 20 '"suggestedUsernames"' | sed -n '/\[/,/\]/p' | grep -o '"[^"]*"' | grep -v "suggestedUsernames" | sed 's/"//g' | tr '\n' ',' | sed 's/,$//')
+    if [ -n "$SUGGESTED" ]; then
+        # Convert to JSON array format
+        SUGGESTED_ARRAY="["
+        IFS=',' read -ra SUGGESTED_ARR <<< "$SUGGESTED"
+        for i in "${!SUGGESTED_ARR[@]}"; do
+            if [ $i -gt 0 ]; then
+                SUGGESTED_ARRAY="$SUGGESTED_ARRAY,"
+            fi
+            SUGGESTED_ARRAY="$SUGGESTED_ARRAY\"${SUGGESTED_ARR[$i]}\""
+        done
+        SUGGESTED_ARRAY="$SUGGESTED_ARRAY]"
+    else
+        SUGGESTED_ARRAY="[]"
+    fi
+fi
+api_call "chat/suggestedusernames" "$SUGGESTED_ARRAY" "suggested usernames"
 
 # Custom Page Content (from markdown file)
 PAGE_CONTENT_FILE="config/page-content.md"

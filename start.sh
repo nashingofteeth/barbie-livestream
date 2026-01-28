@@ -47,6 +47,12 @@ if [ $? -eq 0 ]; then
     ./scripts/setup-logo.sh
     LOGO_SUCCESS=$?
     
+    echo ""
+    
+    # Upload custom emoji
+    ./scripts/setup-emoji.sh
+    EMOJI_SUCCESS=$?
+    
     if [ $CONFIG_SUCCESS -eq 0 ] && [ $THEME_SUCCESS -eq 0 ]; then
         echo ""
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -69,15 +75,16 @@ if [ $? -eq 0 ]; then
         echo "📝 Next steps:"
         echo "   1. Change admin password in admin panel"
         echo "   2. Update .env with your new password"
-        echo "   3. Add custom emojis (see data/emoji/EMOJI-GUIDE.md)"
         echo ""
         echo "💡 Tips:"
         echo "   • Edit config/server-settings.json to change server settings"
         echo "   • Edit theme/ files to customize appearance"
         echo "   • Add theme/logo.png to set a custom logo"
+        echo "   • Add custom emoji: place PNG/GIF files in theme/emoji/"
         echo "   • Run ./scripts/setup-config.sh to apply config changes"
         echo "   • Run ./scripts/setup-theme.sh to apply theme changes"
         echo "   • Run ./scripts/setup-logo.sh to upload logo"
+        echo "   • Run ./scripts/setup-emoji.sh to upload emoji"
         echo "   • View logs: docker-compose logs -f"
         echo "   • Stop server: docker-compose stop"
         echo ""
