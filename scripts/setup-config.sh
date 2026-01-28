@@ -166,21 +166,52 @@ if [ -n "$OFFLINE_MSG" ]; then
     api_call "offlinemessage" "\"$OFFLINE_MSG_ESCAPED\"" "offline message"
 fi
 
-# Tags (as array)
-TAGS=$(echo "$CONFIG" | sed -n '/"tags"/,/\]/p' | grep '"' | sed 's/.*"\(.*\)".*/\1/' | sed 's/,$//' | tr '\n' ',' | sed 's/,$//')
-if [ -n "$TAGS" ]; then
-    # Convert to JSON array format
-    TAG_ARRAY="["
-    IFS=',' read -ra TAG_ARR <<< "$TAGS"
-    for i in "${!TAG_ARR[@]}"; do
-        if [ $i -gt 0 ]; then
-            TAG_ARRAY="$TAG_ARRAY,"
-        fi
-        TAG_ARRAY="$TAG_ARRAY\"${TAG_ARR[$i]}\""
-    done
-    TAG_ARRAY="$TAG_ARRAY]"
-    api_call "tags" "$TAG_ARRAY" "server tags"
+# Tags (as array) - always send, even if empty
+TAGS_LINE=$(echo "$CONFIG" | grep '"tags"')
+if echo "$TAGS_LINE" | grep -q '\[\]'; then
+    # Empty tags array
+    TAG_ARRAY="[]"
+else
+    # Extract tags between the brackets on the tags line
+    TAGS=$(echo "$CONFIG" | grep -A 20 '"tags"' | sed -n '/\[/,/\]/p' | grep -o '"[^"]*"' | grep -v "tags" | sed 's/"//g' | tr '\n' ',' | sed 's/,$//')
+    if [ -n "$TAGS" ]; then
+        # Convert to JSON array format
+        TAG_ARRAY="["
+        IFS=',' read -ra TAG_ARR <<< "$TAGS"
+        for i in "${!TAG_ARR[@]}"; do
+            if [ $i -gt 0 ]; then
+                TAG_ARRAY="$TAG_ARRAY,"
+            fi
+            TAG_ARRAY="$TAG_ARRAY\"${TAG_ARR[$i]}\""
+        done
+        TAG_ARRAY="$TAG_ARRAY]"
+    else
+        TAG_ARRAY="[]"
+    fi
 fi
+api_call "tags" "$TAG_ARRAY" "server tags"
+
+# Social Handles (as array of objects) - always send, even if empty
+SOCIAL_HANDLES=$(echo "$CONFIG" | sed -n '/"socialHandles"/,/\]/p')
+if echo "$SOCIAL_HANDLES" | grep -q "platform"; then
+    # Has social handles - extract the full array
+    SOCIAL_ARRAY=$(echo "$CONFIG" | sed -n '/"socialHandles":/,/^[[:space:]]*\]/p' | sed '1s/.*: //' | tr -d '\n' | sed 's/[[:space:]]*$//')
+else
+    # Empty social handles array
+    SOCIAL_ARRAY="[]"
+fi
+api_call "socialhandles" "$SOCIAL_ARRAY" "social handles"
+
+# External Actions (as array of objects) - always send, even if empty
+EXTERNAL_ACTIONS=$(echo "$CONFIG" | sed -n '/"externalActions"/,/\]/p')
+if echo "$EXTERNAL_ACTIONS" | grep -q "url"; then
+    # Has external actions - extract the full array
+    ACTIONS_ARRAY=$(echo "$CONFIG" | sed -n '/"externalActions":/,/^[[:space:]]*\]/p' | sed '1s/.*: //' | tr -d '\n' | sed 's/[[:space:]]*$//')
+else
+    # Empty external actions array
+    ACTIONS_ARRAY="[]"
+fi
+api_call "externalactions" "$ACTIONS_ARRAY" "external actions"
 
 # Boolean settings
 NSFW=$(echo "$CONFIG" | grep '"nsfw"' | sed 's/.*: \([^,]*\).*/\1/')
