@@ -4,91 +4,113 @@
    ======================================== */
 
 /* Import Barbie-style fonts */
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap");
 
 /* ========================================
    CSS VARIABLES - BARBIE COLOR PALETTE
    ======================================== */
 :root {
   /* Primary Barbie Colors */
-  --theme-color-action: #FF69B4;
-  --theme-color-action-hover: #FF1493;
-  --theme-color-palette-0: #FF69B4; /* Hot Pink */
-  --theme-color-palette-1: #FF1493; /* Deep Pink */
-  --theme-color-palette-2: #FFB6C1; /* Light Pink */
-  --theme-color-palette-3: #FFD700; /* Gold */
-  --theme-color-palette-4: #FFF0F5; /* Lavender Blush */
-  --theme-color-palette-5: #C71585; /* Medium Violet Red */
-  
+  --theme-color-action: #ff69b4;
+  --theme-color-action-hover: #ff1493;
+  --theme-color-palette-0: #ff69b4; /* Hot Pink */
+  --theme-color-palette-1: #ff1493; /* Deep Pink */
+  --theme-color-palette-2: #ffb6c1; /* Light Pink */
+  --theme-color-palette-3: #ffd700; /* Gold */
+  --theme-color-palette-4: #fff0f5; /* Lavender Blush */
+  --theme-color-palette-5: #c71585; /* Medium Violet Red */
+
   /* Component Colors */
-  --theme-color-components-primary-button-bg: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
-  --theme-color-components-primary-button-border: #FFD700;
-  --theme-color-components-primary-button-text: #FFFFFF;
-  
+  --theme-color-components-primary-button-bg: linear-gradient(
+    135deg,
+    #ff69b4 0%,
+    #ff1493 100%
+  );
+  --theme-color-components-primary-button-border: #ffd700;
+  --theme-color-components-primary-button-text: #ffffff;
+
   /* Background and Text */
-  --theme-color-background-main: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%);
-  --theme-color-background-header: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #C71585 100%);
-  --theme-color-text-display: #C71585;
+  --theme-color-background-main: linear-gradient(
+    135deg,
+    #fff0f5 0%,
+    #ffe4e1 100%
+  );
+  --theme-color-background-header: linear-gradient(
+    135deg,
+    #ff69b4 0%,
+    #ff1493 50%,
+    #c71585 100%
+  );
+  --theme-color-text-display: #c71585;
   --theme-color-text-body: #333333;
-  
+
   /* Fonts */
-  --theme-text-display-font-family: 'Pacifico', cursive;
-  --theme-text-body-font-family: 'Poppins', sans-serif;
-  
+  --theme-text-display-font-family: "Pacifico", cursive;
+  --theme-text-body-font-family: "Poppins", sans-serif;
+
   /* Chat Colors */
   --theme-color-components-chat-background: rgba(255, 240, 245, 0.95);
-  --theme-color-components-chat-border: #FFB6C1;
-  --theme-color-components-text-message-background-user: rgba(255, 105, 180, 0.1);
-  --theme-color-components-text-message-background-system: rgba(255, 215, 0, 0.1);
+  --theme-color-components-chat-border: #ffb6c1;
+  --theme-color-components-text-message-background-user: rgba(
+    255,
+    105,
+    180,
+    0.1
+  );
+  --theme-color-components-text-message-background-system: rgba(
+    255,
+    215,
+    0,
+    0.1
+  );
 }
 
 /* ========================================
    GLOBAL STYLES
    ======================================== */
 body {
-  font-family: 'Poppins', sans-serif !important;
-  background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%) !important;
+  font-family: "Poppins", sans-serif !important;
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%) !important;
   background-attachment: fixed !important;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 2 L2 18 L7 13 L11 19 L13 18 L9 12 L16 11 Z" fill="%23FF69B4" stroke="%23FF1493" stroke-width="1"/></svg>') 2 2, auto;
 }
 
 /* ========================================
    HEADER STYLING
    ======================================== */
 header {
-  background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #C71585 100%) !important;
+  background: linear-gradient(
+    135deg,
+    #ff69b4 0%,
+    #ff1493 50%,
+    #c71585 100%
+  ) !important;
   box-shadow: 0 4px 20px rgba(255, 20, 147, 0.3) !important;
-  border-bottom: 3px solid #FFD700 !important;
+  border-bottom: 3px solid #ffd700 !important;
 }
 
 #global-header-text {
-  font-family: 'Pacifico', cursive !important;
-  color: #FFFFFF !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
-               0 0 20px rgba(255, 215, 0, 0.5) !important;
-  font-size: 2rem !important;
+  font-family: "Pacifico", cursive !important;
+  color: #ffffff !important;
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 215, 0, 0.5) !important;
 }
 
 /* ========================================
    OFFLINE BANNER
    ======================================== */
 #offline-banner {
-  background: linear-gradient(135deg, #FF69B4 20%, #FF1493 60%, #C71585 100%) !important;
-  border: 3px solid #FFD700 !important;
+  background: linear-gradient(
+    135deg,
+    #ff69b4 20%,
+    #ff1493 60%,
+    #c71585 100%
+  ) !important;
+  border: 3px solid #ffd700 !important;
   border-radius: 15px !important;
-  padding: 2rem !important;
-  margin: 2rem auto !important;
-  box-shadow: 0 8px 32px rgba(255, 20, 147, 0.4),
-              inset 0 0 20px rgba(255, 215, 0, 0.2) !important;
-}
-
-#offline-banner::before {
-  content: "✨ ";
-  font-size: 2rem;
-}
-
-#offline-banner::after {
-  content: " ✨";
-  font-size: 2rem;
+  box-shadow: 0 8px 32px rgba(255, 20, 147, 0.4), inset 0 0 20px rgba(255, 215, 0, 0.2) !important;
+  margin: 40px;
 }
 
 /* ========================================
@@ -97,14 +119,10 @@ header {
 button,
 .button,
 #follow-button {
-  background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%) !important;
-  border: 2px solid #FFD700 !important;
-  border-radius: 25px !important;
-  color: #FFFFFF !important;
-  font-family: 'Poppins', sans-serif !important;
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%) !important;
+  color: #ffffff !important;
+  font-family: "Poppins", sans-serif !important;
   font-weight: 600 !important;
-  padding: 0.8rem 1.5rem !important;
-  box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3) !important;
   transition: all 0.3s ease !important;
   cursor: pointer !important;
 }
@@ -112,10 +130,7 @@ button,
 button:hover,
 .button:hover,
 #follow-button:hover {
-  background: linear-gradient(135deg, #FF1493 0%, #C71585 100%) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(255, 20, 147, 0.5),
-              0 0 20px rgba(255, 215, 0, 0.3) !important;
+  background: linear-gradient(135deg, #ff1493 0%, #c71585 100%) !important;
 }
 
 /* Hide notification button (disabled via API config) */
@@ -128,7 +143,7 @@ button:hover,
    ======================================== */
 #chat-container {
   background: rgba(255, 240, 245, 0.95) !important;
-  border: 2px solid #FFB6C1 !important;
+  border: 2px solid #ffb6c1 !important;
   border-radius: 15px !important;
   box-shadow: 0 4px 20px rgba(255, 105, 180, 0.2) !important;
   backdrop-filter: blur(10px) !important;
@@ -137,34 +152,28 @@ button:hover,
 /* Chat Messages */
 .chat-message_user {
   background: rgba(255, 105, 180, 0.1) !important;
-  border-left: 3px solid #FF69B4 !important;
+  border-left: 3px solid #ff69b4 !important;
   border-radius: 10px !important;
-  padding: 0.8rem !important;
-  margin: 0.5rem 0 !important;
 }
 
 .chat-message_system {
   background: rgba(255, 215, 0, 0.1) !important;
-  border-left: 3px solid #FFD700 !important;
+  border-left: 3px solid #ffd700 !important;
   border-radius: 10px !important;
-  padding: 0.8rem !important;
-  margin: 0.5rem 0 !important;
   font-style: italic !important;
 }
 
 .chat-message_social {
   background: rgba(199, 21, 133, 0.1) !important;
-  border-left: 3px solid #C71585 !important;
+  border-left: 3px solid #c71585 !important;
   border-radius: 10px !important;
-  padding: 0.8rem !important;
-  margin: 0.5rem 0 !important;
 }
 
 /* ========================================
    VIDEO PLAYER
    ======================================== */
 #video-container {
-  border: 3px solid #FFB6C1 !important;
+  border: 3px solid #ffb6c1 !important;
   border-radius: 15px !important;
   overflow: hidden !important;
   box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3) !important;
@@ -172,20 +181,24 @@ button:hover,
 
 /* Video Controls */
 .video-js .vjs-control-bar {
-  background: linear-gradient(180deg, rgba(255, 105, 180, 0.8) 0%, rgba(255, 20, 147, 0.9) 100%) !important;
-  border-top: 2px solid #FFD700 !important;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 105, 180, 0.8) 0%,
+    rgba(255, 20, 147, 0.9) 100%
+  ) !important;
+  border-top: 2px solid #ffd700 !important;
 }
 
 .video-js .vjs-play-control,
 .video-js .vjs-volume-panel,
 .video-js .vjs-fullscreen-control {
-  color: #FFFFFF !important;
+  color: #ffffff !important;
 }
 
 .video-js .vjs-play-control:hover,
 .video-js .vjs-volume-panel:hover,
 .video-js .vjs-fullscreen-control:hover {
-  color: #FFD700 !important;
+  color: #ffd700 !important;
 }
 
 .video-js .vjs-progress-control .vjs-progress-holder {
@@ -193,7 +206,7 @@ button:hover,
 }
 
 .video-js .vjs-progress-control .vjs-play-progress {
-  background: #FFD700 !important;
+  background: #ffd700 !important;
 }
 
 /* ========================================
@@ -204,8 +217,8 @@ button:hover,
 }
 
 #modal-container > div {
-  background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%) !important;
-  border: 3px solid #FF69B4 !important;
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%) !important;
+  border: 3px solid #ff69b4 !important;
   border-radius: 20px !important;
   box-shadow: 0 12px 48px rgba(255, 20, 147, 0.4) !important;
 }
@@ -213,22 +226,16 @@ button:hover,
 /* ========================================
    FOLLOWERS COLLECTION
    ======================================== */
-#followers-collection {
-  display: grid !important;
-  gap: 1rem !important;
-}
-
 .followers-follower {
   background: rgba(255, 240, 245, 0.8) !important;
-  border: 2px solid #FFB6C1 !important;
+  border: 2px solid #ffb6c1 !important;
   border-radius: 10px !important;
-  padding: 1rem !important;
   transition: all 0.3s ease !important;
 }
 
 .followers-follower:hover {
   background: rgba(255, 182, 193, 0.3) !important;
-  border-color: #FF69B4 !important;
+  border-color: #ff69b4 !important;
   transform: translateY(-3px) !important;
   box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3) !important;
 }
@@ -237,54 +244,39 @@ button:hover,
    CUSTOM PAGE CONTENT
    ======================================== */
 #custom-page-content {
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   color: #333333 !important;
-  line-height: 1.8 !important;
 }
 
 #custom-page-content h1,
 #custom-page-content h2,
 #custom-page-content h3 {
-  font-family: 'Playfair Display', serif !important;
-  color: #C71585 !important;
+  font-family: "Playfair Display", serif !important;
+  color: #c71585 !important;
   text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.3) !important;
 }
 
 #custom-page-content a {
-  color: #FF1493 !important;
+  color: #ff1493 !important;
   text-decoration: none !important;
-  border-bottom: 2px solid #FFB6C1 !important;
+  border-bottom: 2px solid #ffb6c1 !important;
   transition: all 0.3s ease !important;
 }
 
 #custom-page-content a:hover {
-  color: #C71585 !important;
-  border-bottom-color: #FF69B4 !important;
+  color: #c71585 !important;
+  border-bottom-color: #ff69b4 !important;
 }
 
 /* ========================================
    FOOTER
    ======================================== */
 footer {
-  background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%) !important;
-  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%) !important;
+  color: #ffffff !important;
   text-align: center !important;
-  padding: 1.5rem !important;
-  border-top: 3px solid #FFD700 !important;
+  border-top: 3px solid #ffd700 !important;
   box-shadow: 0 -4px 20px rgba(255, 20, 147, 0.3) !important;
-}
-
-/* ========================================
-   LINKS
-   ======================================== */
-a {
-  color: #FF1493 !important;
-  transition: all 0.3s ease !important;
-}
-
-a:hover {
-  color: #C71585 !important;
-  text-shadow: 0 0 10px rgba(255, 105, 180, 0.5) !important;
 }
 
 /* ========================================
@@ -295,46 +287,25 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: #FFF0F5;
+  background: #fff0f5;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
   border-radius: 10px;
-  border: 2px solid #FFF0F5;
+  border: 2px solid #fff0f5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #FF1493 0%, #C71585 100%);
-}
-
-/* ========================================
-   SPARKLE ACCENT (subtle decorative elements)
-   ======================================== */
-.sparkle-accent::before {
-  content: "✨";
-  margin-right: 0.5rem;
-}
-
-.sparkle-accent::after {
-  content: "✨";
-  margin-left: 0.5rem;
+  background: linear-gradient(135deg, #ff1493 0%, #c71585 100%);
 }
 
 /* ========================================
    RESPONSIVE ADJUSTMENTS
    ======================================== */
 @media (max-width: 768px) {
-  #global-header-text {
-    font-size: 1.5rem !important;
-  }
-  
-  button,
-  .button {
-    padding: 0.6rem 1.2rem !important;
-    font-size: 0.9rem !important;
-  }
+  /* Responsive adjustments removed to preserve default sizing */
 }
 
 /* ========================================
@@ -350,11 +321,14 @@ a:hover {
 }
 
 @keyframes glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
   }
   50% {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 105, 180, 0.6);
+    box-shadow:
+      0 0 20px rgba(255, 215, 0, 0.8),
+      0 0 30px rgba(255, 105, 180, 0.6);
   }
 }
 
@@ -363,4 +337,18 @@ button:focus,
 #follow-button:focus {
   animation: glow 2s ease-in-out infinite;
   outline: none !important;
+}
+
+/* ========================================
+   HIDE STATUS BAR
+   ======================================== */
+/* Hide stream status bar with live duration and viewer count */
+#stream-info,
+.stream-info,
+.online-status-bar,
+[class*="statusbar"],
+[class*="StreamInfo"],
+div[class*="online"] > div:has(.viewer-count),
+.viewer-count-container {
+  display: none !important;
 }
