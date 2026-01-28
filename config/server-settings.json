@@ -8,7 +8,7 @@
   "hideViewerCount": false,
   "disableSearchIndexing": false,
   "chatDisabled": true,
-  "chatJoinMessagesEnabled": true,
+  "chatJoinMessagesEnabled": false,
   "chatEstablishedUsersOnlyMode": false,
   "forbiddenUsernames": [
     "admin",
@@ -31,5 +31,11 @@
   ],
   "offlineMessage": "The Dreamhouse is currently closed! 💤 Check back soon for more fabulous Barbie movies. Follow us on social media to get notified when we go live!",
   "socialHandles": [],
-  "externalActions": []
+  "externalActions": [],
+  "notifications": {
+    "browser": {
+      "enabled": false,
+      "goLiveMessage": ""
+    }
+  }
 }

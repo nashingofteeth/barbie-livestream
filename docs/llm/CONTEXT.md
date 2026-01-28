@@ -35,14 +35,14 @@ Instead of manual admin panel configuration, this project uses **configuration-a
 | File | Purpose | Key Functions |
 |------|---------|---------------|
 | `start.sh` | Main entry point | Starts Docker, calls setup scripts |
-| `scripts/setup-config.sh` | Applies server configuration | Reads `config/server-settings.json`, POSTs to API endpoints |
+| `scripts/setup-config.sh` | Applies server configuration | Reads `config/server-settings.json`, POSTs to API endpoints (includes notifications) |
 | `scripts/setup-theme.sh` | Applies CSS/JS theme | Reads `theme/*` files, escapes for JSON, POSTs to API |
 
 ### Configuration Files
 
 | File | Purpose | Format |
 |------|---------|--------|
-| `config/server-settings.json` | All Owncast settings | JSON with server name, tags, chat settings, social links, etc. |
+| `config/server-settings.json` | All Owncast settings | JSON with server name, tags, chat settings, social links, notifications, etc. |
 | `theme/custom.css` | Barbie theme styles | CSS - pink colors, fonts, layout |
 | `theme/custom.js` | Sparkle effects | JavaScript - floating sparkle animations |
 | `.env` | Admin credentials | Shell variables for API auth |
@@ -155,6 +155,7 @@ All endpoints require HTTP Basic Auth with admin credentials.
 | `/api/admin/config/streamtitle` | POST | Set stream title | `{"value":"..."}` |
 | `/api/admin/config/tags` | POST | Set tags | `{"value":["..."]}` |
 | `/api/admin/config/socialhandles` | POST | Set social links | `{"value":[{...}]}` |
+| `/api/admin/config/notifications/browser` | POST | Configure browser notifications | `{"value":{...}}` |
 | `/api/admin/config/customstyles` | POST | Set custom CSS | `{"value":"..."}` |
 | `/api/admin/config/customjavascript` | POST | Set custom JS | `{"value":"..."}` |
 

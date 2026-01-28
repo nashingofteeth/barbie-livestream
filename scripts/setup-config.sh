@@ -242,6 +242,16 @@ if [ -f "$PAGE_CONTENT_FILE" ]; then
     api_call "pagecontent" "\"$CUSTOM_CONTENT_ESCAPED\"" "custom page content"
 fi
 
+# Notification Settings
+BROWSER_ENABLED=$(echo "$CONFIG" | grep -A 10 '"notifications"' | grep -A 5 '"browser"' | grep '"enabled"' | sed 's/.*: \([^,]*\).*/\1/')
+BROWSER_MESSAGE=$(echo "$CONFIG" | grep -A 10 '"notifications"' | grep -A 5 '"browser"' | grep '"goLiveMessage"' | sed 's/.*: "\(.*\)".*/\1/' | sed 's/"$//')
+
+if [ -n "$BROWSER_ENABLED" ]; then
+    BROWSER_MESSAGE_ESCAPED=$(json_escape "$BROWSER_MESSAGE")
+    BROWSER_CONFIG="{\"enabled\":$BROWSER_ENABLED,\"goLiveMessage\":\"$BROWSER_MESSAGE_ESCAPED\"}"
+    api_call "notifications/browser" "$BROWSER_CONFIG" "browser notifications"
+fi
+
 echo ""
 echo -e "${PINK}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "${GREEN}✨ Configuration complete! ✨${NC}"

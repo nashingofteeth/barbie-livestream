@@ -94,7 +94,6 @@
 
       /* Button sparkle effect on hover */
       button:hover::after,
-      #notify-button:hover::after,
       #follow-button:hover::after {
         content: "✨";
         position: absolute;

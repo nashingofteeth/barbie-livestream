@@ -96,7 +96,6 @@ header {
    ======================================== */
 button,
 .button,
-#notify-button,
 #follow-button {
   background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%) !important;
   border: 2px solid #FFD700 !important;
@@ -112,12 +111,16 @@ button,
 
 button:hover,
 .button:hover,
-#notify-button:hover,
 #follow-button:hover {
   background: linear-gradient(135deg, #FF1493 0%, #C71585 100%) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 20px rgba(255, 20, 147, 0.5),
               0 0 20px rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Hide notification button (disabled via API config) */
+#notify-button {
+  display: none !important;
 }
 
 /* ========================================
@@ -357,7 +360,6 @@ a:hover {
 
 /* Apply glow to key interactive elements */
 button:focus,
-#notify-button:focus,
 #follow-button:focus {
   animation: glow 2s ease-in-out infinite;
   outline: none !important;

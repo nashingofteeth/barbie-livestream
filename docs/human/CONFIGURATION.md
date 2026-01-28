@@ -2,7 +2,18 @@
 
 ## Overview
 
-All server settings are in **`config/server-settings.json`**. Edit this file and run `./setup-config.sh` to apply changes.
+All server settings are in **`config/server-settings.json`**. Edit this file and run `./scripts/setup-config.sh` to apply changes.
+
+### Configuration-as-Code Philosophy
+
+This project uses **configuration-as-code**: all settings are defined in version-controlled files (JSON, CSS, JS) rather than configured through the web UI. Benefits:
+
+- **Reproducible**: Same config every time you deploy
+- **Version controlled**: Track changes, rollback if needed
+- **Portable**: Easy to share or migrate to new servers
+- **Automated**: One command applies everything
+
+To change settings: edit the config files, run the setup scripts. Changes made in the Owncast admin panel will be overwritten when scripts run.
 
 ## Quick Reference
 
@@ -58,10 +69,26 @@ nano theme/custom.css  # or theme/custom.js
 {
   "chatDisabled": false,
   "chatJoinMessagesEnabled": true,
+  "chatEstablishedUsersOnlyMode": false,
   "forbiddenUsernames": ["admin", "bot"],
   "suggestedUsernames": ["BarbieGirl", "KenDoll"]
 }
 ```
+
+### Notification Settings
+
+```json
+{
+  "notifications": {
+    "browser": {
+      "enabled": false,
+      "goLiveMessage": ""
+    }
+  }
+}
+```
+
+Set `enabled: true` to allow browser notifications when stream goes live. The notification button will be hidden when disabled.
 
 ### Social Links
 
@@ -137,9 +164,12 @@ All options:
 | `hideViewerCount` | boolean | Hide viewer count |
 | `chatDisabled` | boolean | Disable chat |
 | `chatJoinMessagesEnabled` | boolean | Show join messages |
+| `chatEstablishedUsersOnlyMode` | boolean | Restrict chat to established users |
 | `forbiddenUsernames` | array | Blocked usernames |
 | `suggestedUsernames` | array | Auto-assigned names |
 | `socialHandles` | array | Social media links |
+| `notifications.browser.enabled` | boolean | Enable browser notifications |
+| `notifications.browser.goLiveMessage` | string | Notification message text |
 | `customPageContent` | string | Markdown content |
 
 ## Common Tasks
