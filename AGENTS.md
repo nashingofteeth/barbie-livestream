@@ -31,12 +31,16 @@ This project has no `npm`, `make`, or test runners. Testing is manual.
 # Test theme application (requires Owncast running)
 ./scripts/setup-theme.sh
 
+# Upload logo (requires Owncast running)
+./scripts/setup-logo.sh theme/logo.png
+
 # Validate JSON syntax
 python3 -m json.tool < config/server-settings.json
 
 # Check bash syntax (no execution)
 bash -n scripts/setup-config.sh
 bash -n scripts/setup-theme.sh
+bash -n scripts/setup-logo.sh
 bash -n start.sh
 ```
 
@@ -177,12 +181,15 @@ fi
 **Scripts:** All automation in `scripts/` directory
 - `scripts/setup-config.sh` - Apply server config
 - `scripts/setup-theme.sh` - Apply CSS/JS theme
+- `scripts/setup-logo.sh` - Upload logo image
 - `start.sh` - Main entry point (kept in root)
 
 **Config:** All configuration in version control
 - `config/server-settings.json` - Server settings
+- `config/page-content.md` - Custom page content (markdown)
 - `theme/custom.css` - Theme styles
 - `theme/custom.js` - Client-side effects
+- `theme/logo.png` - Server logo (optional, auto-uploaded on start)
 - `.env` - Credentials (NOT in git, use `.env.example` template)
 
 **Documentation:**
@@ -242,6 +249,7 @@ curl -s -w "\n%{http_code}" -X POST \
 - `streamtitle` - Current stream title
 - `offlinemessage` - Message shown when offline
 - `pagecontent` - Custom markdown page content
+- `logo` - Server logo (base64 data URI string)
 - `tags` - Server tags (array)
 - `nsfw` - NSFW flag (boolean)
 - `hideviewercount` - Hide viewer count (boolean)

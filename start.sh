@@ -27,8 +27,8 @@ if [ $? -eq 0 ]; then
     echo "✅ Server is starting!"
     echo ""
     
-    # Automatically apply configuration and theme
-    echo "🎨 Applying Barbie configuration and theme..."
+    # Automatically apply configuration, theme, and logo
+    echo "🎨 Applying Barbie configuration, theme, and logo..."
     echo ""
     
     # Apply server configuration first
@@ -40,6 +40,12 @@ if [ $? -eq 0 ]; then
     # Apply theme
     ./scripts/setup-theme.sh
     THEME_SUCCESS=$?
+    
+    echo ""
+    
+    # Apply logo
+    ./scripts/setup-logo.sh
+    LOGO_SUCCESS=$?
     
     if [ $CONFIG_SUCCESS -eq 0 ] && [ $THEME_SUCCESS -eq 0 ]; then
         echo ""
@@ -68,8 +74,10 @@ if [ $? -eq 0 ]; then
         echo "💡 Tips:"
         echo "   • Edit config/server-settings.json to change server settings"
         echo "   • Edit theme/ files to customize appearance"
+        echo "   • Add theme/logo.png to set a custom logo"
         echo "   • Run ./scripts/setup-config.sh to apply config changes"
         echo "   • Run ./scripts/setup-theme.sh to apply theme changes"
+        echo "   • Run ./scripts/setup-logo.sh to upload logo"
         echo "   • View logs: docker-compose logs -f"
         echo "   • Stop server: docker-compose stop"
         echo ""
