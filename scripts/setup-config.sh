@@ -142,14 +142,14 @@ fi
 SERVER_SUMMARY=$(echo "$CONFIG" | grep '"serverSummary"' | sed 's/.*: "\(.*\)".*/\1/' | sed 's/",$//')
 if [ -n "$SERVER_SUMMARY" ]; then
     SERVER_SUMMARY_ESCAPED=$(json_escape "$SERVER_SUMMARY")
-    api_call "summary" "\"$SERVER_SUMMARY_ESCAPED\"" "server summary"
+    api_call "serversummary" "\"$SERVER_SUMMARY_ESCAPED\"" "server summary"
 fi
 
 # Welcome Message
 WELCOME_MSG=$(echo "$CONFIG" | grep '"serverWelcomeMessage"' | sed 's/.*: "\(.*\)".*/\1/' | sed 's/",$//')
 if [ -n "$WELCOME_MSG" ]; then
     WELCOME_MSG_ESCAPED=$(json_escape "$WELCOME_MSG")
-    api_call "serversummary" "\"$WELCOME_MSG_ESCAPED\"" "welcome message"
+    api_call "welcomemessage" "\"$WELCOME_MSG_ESCAPED\"" "welcome message"
 fi
 
 # Stream Title
@@ -163,7 +163,7 @@ fi
 OFFLINE_MSG=$(echo "$CONFIG" | grep '"offlineMessage"' | sed 's/.*: "\(.*\)".*/\1/' | sed 's/",$//')
 if [ -n "$OFFLINE_MSG" ]; then
     OFFLINE_MSG_ESCAPED=$(json_escape "$OFFLINE_MSG")
-    api_call "customofflinemessage" "\"$OFFLINE_MSG_ESCAPED\"" "offline message"
+    api_call "offlinemessage" "\"$OFFLINE_MSG_ESCAPED\"" "offline message"
 fi
 
 # Tags (as array)
@@ -183,31 +183,30 @@ if [ -n "$TAGS" ]; then
 fi
 
 # Boolean settings
-NSFW=$(echo "$CONFIG" | grep '"nsfw"' | sed 's/.*: \(.*\),*/\1/')
+NSFW=$(echo "$CONFIG" | grep '"nsfw"' | sed 's/.*: \([^,]*\).*/\1/')
 if [ -n "$NSFW" ]; then
     api_call "nsfw" "$NSFW" "NSFW flag"
 fi
 
-HIDE_VIEWER_COUNT=$(echo "$CONFIG" | grep '"hideViewerCount"' | sed 's/.*: \(.*\),*/\1/')
+HIDE_VIEWER_COUNT=$(echo "$CONFIG" | grep '"hideViewerCount"' | sed 's/.*: \([^,]*\).*/\1/')
 if [ -n "$HIDE_VIEWER_COUNT" ]; then
     api_call "hideviewercount" "$HIDE_VIEWER_COUNT" "viewer count visibility"
 fi
 
-CHAT_DISABLED=$(echo "$CONFIG" | grep '"chatDisabled"' | sed 's/.*: \(.*\),*/\1/')
+CHAT_DISABLED=$(echo "$CONFIG" | grep '"chatDisabled"' | sed 's/.*: \([^,]*\).*/\1/')
 if [ -n "$CHAT_DISABLED" ]; then
-    api_call "chatdisabled" "$CHAT_DISABLED" "chat status"
+    api_call "chat/disable" "$CHAT_DISABLED" "chat status"
 fi
 
-CHAT_JOIN=$(echo "$CONFIG" | grep '"chatJoinMessagesEnabled"' | sed 's/.*: \(.*\),*/\1/')
+CHAT_JOIN=$(echo "$CONFIG" | grep '"chatJoinMessagesEnabled"' | sed 's/.*: \([^,]*\).*/\1/')
 if [ -n "$CHAT_JOIN" ]; then
-    api_call "chatjoinmessagesenabled" "$CHAT_JOIN" "chat join messages"
+    api_call "chat/joinmessagesenabled" "$CHAT_JOIN" "chat join messages"
 fi
 
-# Custom Page Content
-CUSTOM_CONTENT=$(echo "$CONFIG" | sed -n '/"customPageContent"/,/^[[:space:]]*}/p' | sed '1d;$d' | sed 's/\\n/\n/g')
-if [ -n "$CUSTOM_CONTENT" ]; then
-    # Remove the outer quotes and unescape
-    CUSTOM_CONTENT=$(echo "$CUSTOM_CONTENT" | sed 's/^[[:space:]]*"//;s/"[[:space:]]*$//')
+# Custom Page Content (from markdown file)
+PAGE_CONTENT_FILE="config/page-content.md"
+if [ -f "$PAGE_CONTENT_FILE" ]; then
+    CUSTOM_CONTENT=$(cat "$PAGE_CONTENT_FILE")
     CUSTOM_CONTENT_ESCAPED=$(json_escape "$CUSTOM_CONTENT")
     api_call "pagecontent" "\"$CUSTOM_CONTENT_ESCAPED\"" "custom page content"
 fi
