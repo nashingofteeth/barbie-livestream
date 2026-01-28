@@ -12,6 +12,8 @@ services:
       - ./data:/app/data
     environment:
       - TZ=America/New_York
+    env_file:
+      - .env
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/api/status"]
       interval: 30s

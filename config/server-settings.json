@@ -1,0 +1,66 @@
+{
+  "serverName": "Barbie Movie Night Dreamhouse",
+  "serverSummary": "Join us for fabulous 2000s Barbie movie marathons! Stream classics like The Princess and the Pauper, Fairytopia, and more. Grab your snacks and let's relive the magic together!",
+  "serverWelcomeMessage": "Welcome to the Dreamhouse! ✨ Get comfy, grab some snacks, and enjoy the show! Feel free to chat with everyone and share your favorite Barbie moments!",
+  "streamTitle": "Barbie Movie Marathon 🎬✨",
+  "tags": [
+    "barbie",
+    "movies",
+    "2000s",
+    "nostalgia",
+    "animation",
+    "family-friendly",
+    "watch-party"
+  ],
+  "nsfw": false,
+  "hideViewerCount": false,
+  "disableSearchIndexing": false,
+  "chatDisabled": false,
+  "chatJoinMessagesEnabled": true,
+  "chatEstablishedUsersOnlyMode": false,
+  "forbiddenUsernames": [
+    "admin",
+    "system",
+    "bot",
+    "moderator",
+    "owncast"
+  ],
+  "suggestedUsernames": [
+    "BarbieGirl",
+    "KenDoll",
+    "DreamhouseVisitor",
+    "FairytopiaBabe",
+    "PrincessFan",
+    "MagicMermaid",
+    "PegasusPrincess",
+    "NutcrackerFan",
+    "RapunzelRocks",
+    "SwanLakeStar"
+  ],
+  "offlineMessage": "The Dreamhouse is currently closed! 💤 Check back soon for more fabulous Barbie movies. Follow us on social media to get notified when we go live!",
+  "socialHandles": [
+    {
+      "platform": "discord",
+      "url": "https://discord.gg/your-server"
+    },
+    {
+      "platform": "twitter", 
+      "url": "https://twitter.com/yourhandle"
+    },
+    {
+      "platform": "instagram",
+      "url": "https://instagram.com/yourhandle"
+    }
+  ],
+  "externalActions": [
+    {
+      "url": "https://example.com/donate",
+      "title": "Support the Stream",
+      "description": "Help keep the Barbie movie nights going!",
+      "icon": "https://example.com/heart-icon.png",
+      "color": "#FF69B4",
+      "openExternally": true
+    }
+  ],
+  "customPageContent": "## Tonight's Feature\n\n**Barbie as The Princess and the Pauper (2004)**\n\nJoin us for this classic tale of switched identities and royal adventures!\n\n## Schedule\n\n- **7:00 PM** - Pre-show chat and trivia\n- **7:30 PM** - Movie starts\n- **9:00 PM** - Post-movie discussion\n\n## Rules\n\n- Be kind and respectful to everyone\n- No spoilers for those watching for the first time\n- Keep chat family-friendly\n- Have fun and embrace the nostalgia!\n\n✨ Enjoy the show! ✨"
+}

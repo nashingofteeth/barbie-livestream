@@ -1,3 +1,6 @@
+# Environment variables (contains admin password)
+.env
+
 # Owncast data directory
 data/
 !data/public/
