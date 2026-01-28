@@ -243,14 +243,16 @@ curl -s -w "\n%{http_code}" -X POST \
 **Authentication:** HTTP Basic Auth (username: `admin`, password from `.env`)
 
 **Common Endpoints** (all lowercase, all POST):
-- `name` - Server name
-- `serversummary` - Server summary/description
-- `welcomemessage` - Chat welcome message
-- `streamtitle` - Current stream title
-- `offlinemessage` - Message shown when offline
-- `pagecontent` - Custom markdown page content
+- `name` - Server name (string)
+- `serversummary` - Server summary/description (string)
+- `welcomemessage` - Chat welcome message (string)
+- `streamtitle` - Current stream title (string)
+- `offlinemessage` - Message shown when offline (string)
+- `pagecontent` - Custom markdown page content (string)
 - `logo` - Server logo (base64 data URI string)
-- `tags` - Server tags (array)
+- `tags` - Server tags (array of strings)
+- `socialhandles` - Social media links (array of objects)
+- `externalactions` - Custom action buttons (array of objects)
 - `nsfw` - NSFW flag (boolean)
 - `hideviewercount` - Hide viewer count (boolean)
 - `chat/disable` - Disable chat (boolean)
@@ -279,6 +281,33 @@ curl -s -w "\n%{http_code}" -X POST \
 - ❌ `chatjoinmessagesenabled` → ✅ `chat/joinmessagesenabled`
 
 **Note:** Chat-related endpoints use a `/chat/` subpath structure.
+
+## API Behavior Notes
+
+**Logo Upload:**
+- Send as base64 data URI: `data:image/png;base64,<encoded-data>`
+- Owncast decodes and saves to `data/logo.png`
+- Served publicly at `/logo`
+- Config stores just filename: `"logo.png"`
+
+**Empty Arrays:**
+- Always send empty arrays as `[]`, not omit the field
+- API may return `null` for empty arrays (functionally equivalent)
+- Empty arrays clear existing values (tags, socialHandles, externalActions)
+
+**Boolean Parsing:**
+- Extract with: `sed 's/.*: \([^,]*\).*/\1/'` (captures until comma)
+- NOT: `sed 's/.*: \(.*\),*/\1/'` (includes trailing comma)
+
+**Array Parsing Pitfall:**
+- DON'T use: `sed -n '/"field"/,/\]/p'` (matches ANY `]`)
+- DO check for empty: `grep '"field"' | grep -q '\[\]'`
+- For populated arrays, use targeted extraction within bounds
+
+**Page Content:**
+- Read from `config/page-content.md` (not JSON)
+- Send full markdown content as string
+- Owncast converts markdown → HTML automatically
 
 ## Git Workflow
 
