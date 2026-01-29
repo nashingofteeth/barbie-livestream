@@ -1,8 +1,8 @@
 {
-  "serverName": "Barbie Movie Night Dreamhouse",
-  "serverSummary": "Join us for fabulous 2000s Barbie movie marathons! Stream classics like The Princess and the Pauper, Fairytopia, and more. Grab your snacks and let's relive the magic together!",
-  "serverWelcomeMessage": "Welcome to the Dreamhouse! ✨ Get comfy, grab some snacks, and enjoy the show! Feel free to chat with everyone and share your favorite Barbie moments!",
-  "streamTitle": "Barbie Movie Marathon 🎬✨",
+  "serverName": "BCU Completists Livestream",
+  "serverSummary": "Welcome! Get comfy, grab some snacks, and enjoy the Barbie magic!",
+  "serverWelcomeMessage": "Welcome to the Dreamhouse! ✨ Feel free to chat with everyone and share your favorite Barbie moments!",
+  "streamTitle": "Barbie Movie Watch Party 🎬✨",
   "serverUrl": "",
   "tags": [],
   "nsfw": false,
@@ -14,13 +14,7 @@
   "chatEstablishedUsersOnlyMode": false,
   "spamProtectionEnabled": true,
   "slurFilterEnabled": true,
-  "forbiddenUsernames": [
-    "admin",
-    "system",
-    "bot",
-    "moderator",
-    "owncast"
-  ],
+  "forbiddenUsernames": ["admin", "system", "bot", "moderator", "owncast"],
   "suggestedUsernames": [
     "BarbieGirl",
     "KenDoll",
@@ -33,7 +27,7 @@
     "RapunzelRocks",
     "SwanLakeStar"
   ],
-  "offlineMessage": "The Dreamhouse is currently closed! 💤 Check back soon for more fabulous Barbie movies. Follow us on social media to get notified when we go live!",
+  "offlineMessage": "The Dreamhouse is currently closed! 💤",
   "socialHandles": [],
   "externalActions": [],
   "notifications": {
