@@ -31,7 +31,7 @@ if [ -z "$OWNCAST_ADMIN_PASSWORD" ]; then
 fi
 
 # Set defaults
-OWNCAST_URL=${OWNCAST_URL:-http://localhost:8080}
+OWNCAST_URL=${OWNCAST_URL:-http://localhost:2001}
 OWNCAST_ADMIN_USER=${OWNCAST_ADMIN_USER:-admin}
 
 # Emoji directory

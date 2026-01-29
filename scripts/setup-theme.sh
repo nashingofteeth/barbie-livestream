@@ -32,7 +32,7 @@ if [ -z "$OWNCAST_ADMIN_PASSWORD" ]; then
 fi
 
 # Set defaults if not specified
-OWNCAST_URL=${OWNCAST_URL:-http://localhost:8080}
+OWNCAST_URL=${OWNCAST_URL:-http://localhost:2001}
 OWNCAST_ADMIN_USER=${OWNCAST_ADMIN_USER:-admin}
 
 # Theme files
