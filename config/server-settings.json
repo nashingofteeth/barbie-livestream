@@ -35,5 +35,40 @@
       "enabled": false,
       "goLiveMessage": ""
     }
-  }
+  },
+  "videoVariants": [
+    {
+      "name": "low",
+      "videoPassthrough": false,
+      "audioPassthrough": false,
+      "videoBitrate": 2000,
+      "audioBitrate": 96,
+      "scaledWidth": 0,
+      "scaledHeight": 0,
+      "framerate": 24,
+      "cpuUsageLevel": 2
+    },
+    {
+      "name": "medium",
+      "videoPassthrough": false,
+      "audioPassthrough": false,
+      "videoBitrate": 6000,
+      "audioBitrate": 128,
+      "scaledWidth": 0,
+      "scaledHeight": 0,
+      "framerate": 24,
+      "cpuUsageLevel": 2
+    },
+    {
+      "name": "high",
+      "videoPassthrough": false,
+      "audioPassthrough": false,
+      "videoBitrate": 9000,
+      "audioBitrate": 160,
+      "scaledWidth": 0,
+      "scaledHeight": 0,
+      "framerate": 24,
+      "cpuUsageLevel": 3
+    }
+  ]
 }

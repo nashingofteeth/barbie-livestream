@@ -333,6 +333,16 @@ if [ -n "$BROWSER_ENABLED" ]; then
     api_call "notifications/browser" "$BROWSER_CONFIG" "browser notifications"
 fi
 
+# Video Variants (as array of objects)
+VIDEO_VARIANTS=$(echo "$CONFIG" | sed -n '/"videoVariants"/,/^[[:space:]]*\]/p')
+if echo "$VIDEO_VARIANTS" | grep -q "name"; then
+    # Has video variants - extract the full array
+    VARIANTS_ARRAY=$(echo "$CONFIG" | sed -n '/"videoVariants":/,/^[[:space:]]*\]/p' | sed '1s/.*: //' | tr -d '\n' | sed 's/[[:space:]]*$//')
+    if [ -n "$VARIANTS_ARRAY" ]; then
+        api_call "video/streamoutputvariants" "$VARIANTS_ARRAY" "video output variants"
+    fi
+fi
+
 echo ""
 echo -e "${PINK}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo -e "${GREEN}✨ Configuration complete! ✨${NC}"
