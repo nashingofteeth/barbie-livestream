@@ -120,7 +120,7 @@ header {
   border: 3px solid #ffd700 !important;
   border-radius: 15px !important;
   box-shadow: 0 8px 32px rgba(255, 20, 147, 0.4), inset 0 0 20px rgba(255, 215, 0, 0.2) !important;
-  margin: 40px;
+  margin: 2vw;
 }
 
 /* ========================================
@@ -182,11 +182,10 @@ button:hover,
 /* ========================================
    VIDEO PLAYER
    ======================================== */
-#video-container {
-  border: 3px solid #ffb6c1 !important;
-  border-radius: 15px !important;
-  overflow: hidden !important;
+#player {
   box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3) !important;
+  position: relative !important;
+  z-index: 10 !important;
 }
 
 /* Video Controls */
@@ -346,6 +345,34 @@ footer {
   }
 }
 
+@keyframes sparkle-float {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px)) translateX(var(--drift-x, 0)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle-twinkle {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
 /* Apply glow to key interactive elements */
 button:focus,
 #follow-button:focus {
@@ -365,4 +392,31 @@ button:focus,
 div[class*="online"] > div:has(.viewer-count),
 .viewer-count-container {
   display: none !important;
+}
+
+/* ========================================
+   SPARKLES
+   ======================================== */
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  animation: sparkle-float linear forwards;
+  will-change: transform, opacity;
+}
+
+.sparkle-inner {
+  font-size: 20px;
+  animation: sparkle-twinkle 1.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .sparkle,
+  .sparkle-inner {
+    animation: none;
+    display: none;
+  }
 }
