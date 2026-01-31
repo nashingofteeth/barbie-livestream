@@ -19,7 +19,7 @@ In this animated follow-up to Fairytopia, Elina enlists the help of a mermaid, N
 
 ✨ Enjoy the show! ✨
 
-## Previous screenings
+## Previous Screenings
 
 - 07/27/2025 - [Barbie and the Diamond Castle (2008)](https://boxd.it/1R2K)
 - 08/24/2025 - [Barbie: The Pearl Princess (2014)](https://boxd.it/7x6Y)
