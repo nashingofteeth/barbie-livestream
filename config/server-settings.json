@@ -38,18 +38,18 @@
   },
   "videoVariants": [
     {
-      "name": "low",
+      "name": "Diamond Castle",
       "videoPassthrough": false,
       "audioPassthrough": false,
-      "videoBitrate": 1000,
-      "audioBitrate": 96,
+      "videoBitrate": 9000,
+      "audioBitrate": 160,
       "scaledWidth": 0,
       "scaledHeight": 0,
       "framerate": 24,
-      "cpuUsageLevel": 2
+      "cpuUsageLevel": 3
     },
     {
-      "name": "medium",
+      "name": "HQ",
       "videoPassthrough": false,
       "audioPassthrough": false,
       "videoBitrate": 5000,
@@ -60,15 +60,26 @@
       "cpuUsageLevel": 2
     },
     {
-      "name": "high",
+      "name": "Standard",
       "videoPassthrough": false,
       "audioPassthrough": false,
-      "videoBitrate": 9000,
-      "audioBitrate": 160,
+      "videoBitrate": 3000,
+      "audioBitrate": 96,
       "scaledWidth": 0,
       "scaledHeight": 0,
       "framerate": 24,
-      "cpuUsageLevel": 3
+      "cpuUsageLevel": 2
+    },
+    {
+      "name": "Potato",
+      "videoPassthrough": false,
+      "audioPassthrough": false,
+      "videoBitrate": 1000,
+      "audioBitrate": 96,
+      "scaledWidth": 0,
+      "scaledHeight": 0,
+      "framerate": 24,
+      "cpuUsageLevel": 1
     }
   ]
 }
