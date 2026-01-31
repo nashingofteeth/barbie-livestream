@@ -3,23 +3,38 @@
 (function() {
   /** ========================================
    *  SPARKLE MANAGER
-   *  Floating sparkles that avoid video player
+   *  Two types: falling from top + cursor-generated
    *  ======================================== */
   
   const CONFIG = {
-    maxSparkles: 25,
-    spawnInterval: 400, // ms between sparkles
-    minDuration: 4000, // min animation duration
-    maxDuration: 7000, // max animation duration
-    minDrift: -30, // min horizontal drift (px)
-    maxDrift: 30, // max horizontal drift (px)
+    // Ambient sparkles (falling from top)
+    maxAmbientSparkles: 15,
+    ambientSpawnInterval: 500, // ms between ambient sparkles
+    ambientMinDuration: 4000,
+    ambientMaxDuration: 7000,
+    ambientMinDrift: -30,
+    ambientMaxDrift: 30,
+    
+    // Cursor sparkles
+    maxCursorSparkles: 30,
+    cursorSpawnThrottle: 80, // ms between cursor sparkles
+    cursorMinDuration: 2000,
+    cursorMaxDuration: 4000,
+    cursorSpreadRadius: 20,
+    cursorMinVelocityX: -50,
+    cursorMaxVelocityX: 50,
+    cursorMinVelocityY: 30,
+    cursorMaxVelocityY: 100,
+    cursorGravity: 0.5,
   };
 
   class SparkleManager {
     constructor() {
-      this.sparkles = [];
+      this.ambientSparkles = [];
+      this.cursorSparkles = [];
       this.isRunning = false;
-      this.spawnTimer = null;
+      this.ambientTimer = null;
+      this.lastCursorSpawnTime = 0;
       this.videoContainer = null;
     }
 
@@ -35,24 +50,37 @@
     start() {
       this.isRunning = true;
       this.videoContainer = document.querySelector('#video-container');
-      this.scheduleNextSparkle();
+      
+      // Start ambient sparkles
+      this.scheduleNextAmbientSparkle();
+      
+      // Track mouse movement for cursor sparkles
+      document.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        if (now - this.lastCursorSpawnTime > CONFIG.cursorSpawnThrottle) {
+          if (this.cursorSparkles.length < CONFIG.maxCursorSparkles) {
+            this.createCursorSparkle(e.clientX, e.clientY);
+          }
+          this.lastCursorSpawnTime = now;
+        }
+      });
     }
 
-    scheduleNextSparkle() {
+    scheduleNextAmbientSparkle() {
       if (!this.isRunning) return;
 
-      this.spawnTimer = setTimeout(() => {
-        if (this.sparkles.length < CONFIG.maxSparkles) {
-          this.createSparkle();
+      this.ambientTimer = setTimeout(() => {
+        if (this.ambientSparkles.length < CONFIG.maxAmbientSparkles) {
+          this.createAmbientSparkle();
         }
-        this.scheduleNextSparkle();
-      }, CONFIG.spawnInterval + Math.random() * 200);
+        this.scheduleNextAmbientSparkle();
+      }, CONFIG.ambientSpawnInterval + Math.random() * 200);
     }
 
-    createSparkle() {
+    createAmbientSparkle() {
       // Create wrapper for position animation
       const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
+      sparkle.className = 'sparkle sparkle-ambient';
       
       // Create inner element for twinkle animation
       const sparkleInner = document.createElement('span');
@@ -65,15 +93,14 @@
       
       // Check if position overlaps with video player
       if (this.isOverVideoPlayer(x)) {
-        // Skip this sparkle if it would cover the video
-        return;
+        return; // Skip this sparkle
       }
 
       // Random animation duration
-      const duration = CONFIG.minDuration + Math.random() * (CONFIG.maxDuration - CONFIG.minDuration);
+      const duration = CONFIG.ambientMinDuration + Math.random() * (CONFIG.ambientMaxDuration - CONFIG.ambientMinDuration);
       
       // Random horizontal drift
-      const drift = CONFIG.minDrift + Math.random() * (CONFIG.maxDrift - CONFIG.minDrift);
+      const drift = CONFIG.ambientMinDrift + Math.random() * (CONFIG.ambientMaxDrift - CONFIG.ambientMinDrift);
 
       // Apply styles - start at top of viewport plus scroll
       sparkle.style.left = `${x}px`;
@@ -83,11 +110,59 @@
 
       // Add to DOM
       document.body.appendChild(sparkle);
-      this.sparkles.push(sparkle);
+      this.ambientSparkles.push(sparkle);
 
       // Remove after animation completes
       setTimeout(() => {
-        this.removeSparkle(sparkle);
+        this.removeSparkle(sparkle, 'ambient');
+      }, duration);
+    }
+
+    createCursorSparkle(x, y) {
+      // Create wrapper for position animation
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle sparkle-cursor';
+      
+      // Create inner element for twinkle animation
+      const sparkleInner = document.createElement('span');
+      sparkleInner.className = 'sparkle-inner';
+      sparkleInner.textContent = '✨';
+      sparkle.appendChild(sparkleInner);
+
+      // Add random offset from cursor position
+      const offsetX = (Math.random() - 0.5) * CONFIG.cursorSpreadRadius;
+      const offsetY = (Math.random() - 0.5) * CONFIG.cursorSpreadRadius;
+      const startX = x + offsetX;
+      const startY = y + offsetY;
+
+      // Random animation duration
+      const duration = CONFIG.cursorMinDuration + Math.random() * (CONFIG.cursorMaxDuration - CONFIG.cursorMinDuration);
+      
+      // Random velocity (direction and speed of fall)
+      const velocityX = CONFIG.cursorMinVelocityX + Math.random() * (CONFIG.cursorMaxVelocityX - CONFIG.cursorMinVelocityX);
+      const velocityY = CONFIG.cursorMinVelocityY + Math.random() * (CONFIG.cursorMaxVelocityY - CONFIG.cursorMinVelocityY);
+      
+      // Calculate end position based on velocity and gravity
+      const durationSec = duration / 1000;
+      const endX = startX + (velocityX * durationSec);
+      const endY = startY + (velocityY * durationSec) + (0.5 * CONFIG.cursorGravity * Math.pow(durationSec, 2) * 100);
+
+      // Apply styles
+      sparkle.style.left = `${startX}px`;
+      sparkle.style.top = `${startY}px`;
+      sparkle.style.animationDuration = `${duration}ms`;
+      sparkle.style.setProperty('--start-x', '0px');
+      sparkle.style.setProperty('--start-y', '0px');
+      sparkle.style.setProperty('--end-x', `${endX - startX}px`);
+      sparkle.style.setProperty('--end-y', `${endY - startY}px`);
+
+      // Add to DOM
+      document.body.appendChild(sparkle);
+      this.cursorSparkles.push(sparkle);
+
+      // Remove after animation completes
+      setTimeout(() => {
+        this.removeSparkle(sparkle, 'cursor');
       }, duration);
     }
 
@@ -101,10 +176,11 @@
       return x >= rect.left && x <= (rect.right + sparkleWidth);
     }
 
-    removeSparkle(sparkle) {
-      const index = this.sparkles.indexOf(sparkle);
+    removeSparkle(sparkle, type) {
+      const array = type === 'ambient' ? this.ambientSparkles : this.cursorSparkles;
+      const index = array.indexOf(sparkle);
       if (index > -1) {
-        this.sparkles.splice(index, 1);
+        array.splice(index, 1);
       }
       if (sparkle.parentNode) {
         sparkle.parentNode.removeChild(sparkle);
@@ -113,16 +189,18 @@
 
     stop() {
       this.isRunning = false;
-      if (this.spawnTimer) {
-        clearTimeout(this.spawnTimer);
+      if (this.ambientTimer) {
+        clearTimeout(this.ambientTimer);
       }
+      
       // Clean up existing sparkles
-      this.sparkles.forEach(sparkle => {
+      [...this.ambientSparkles, ...this.cursorSparkles].forEach(sparkle => {
         if (sparkle.parentNode) {
           sparkle.parentNode.removeChild(sparkle);
         }
       });
-      this.sparkles = [];
+      this.ambientSparkles = [];
+      this.cursorSparkles = [];
     }
   }
 
