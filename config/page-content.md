@@ -1,10 +1,10 @@
 ## Tonight's Feature
 
-**[Barbie Fairytopia: Mermaidia (2006)](https://boxd.it/1Que)**
+**[Barbie as The Princess & the Pauper (2004)](https://boxd.it/1MGU)**
 
-In this animated follow-up to Fairytopia, Elina enlists the help of a mermaid, Nori, to save her friend Nalu, a merman prince who has been captured by the wicked Laverna.
+In her first animated musical featuring seven original songs, Barbie comes to life in this modern re-telling of a classic tale of mistaken identity and the power of friendship. Based on the story by Mark Twain.
 
-*Start time: 8pm PST*
+*Start time: 7pm PST*
 
 ## Rules
 
@@ -31,3 +31,4 @@ In this animated follow-up to Fairytopia, Elina enlists the help of a mermaid, N
 - 12/07/2025 - [Barbie: Fairytopia (2005)](https://boxd.it/1Quo)
 - 01/04/2026 - [Barbie in the Nutcracker (2001)](https://boxd.it/1MGA)
 - 01/04/2026 - [Barbie in a Christmas Carol (2008)](https://boxd.it/1Q8C)
+- 02/01/2026 - [Barbie Fairytopia: Mermaidia](https://boxd.it/1Que)
