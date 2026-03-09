@@ -1,8 +1,8 @@
 ## Tonight's Feature
 
-**[Barbie as The Princess & the Pauper (2004)](https://boxd.it/1MGU)**
+**[Barbie as the Island Princess (2007)](https://boxd.it/1Quy)**
 
-In her first animated musical featuring seven original songs, Barbie comes to life in this modern re-telling of a classic tale of mistaken identity and the power of friendship. Based on the story by Mark Twain.
+Young Rosella is saved by a few kind animals after a shipwreck. Now called Ro, she learns to talk to animals. One day, she saves the life of a prince and returns to civilisation to discover her past.
 
 *Start time: 7pm PST*
 
@@ -31,4 +31,5 @@ In her first animated musical featuring seven original songs, Barbie comes to li
 - 12/07/2025 - [Barbie: Fairytopia (2005)](https://boxd.it/1Quo)
 - 01/04/2026 - [Barbie in the Nutcracker (2001)](https://boxd.it/1MGA)
 - 01/04/2026 - [Barbie in a Christmas Carol (2008)](https://boxd.it/1Q8C)
-- 02/01/2026 - [Barbie Fairytopia: Mermaidia](https://boxd.it/1Que)
+- 02/01/2026 - [Barbie Fairytopia: Mermaidia (2006)](https://boxd.it/1Que)
+- 02/22/2026 - [Barbie as The Princess & the Pauper (2004)](https://boxd.it/1MGU)
