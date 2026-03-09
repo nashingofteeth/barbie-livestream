@@ -80,6 +80,17 @@
       "scaledHeight": 0,
       "framerate": 24,
       "cpuUsageLevel": 1
+    },
+    {
+      "name": "Subterranean",
+      "videoPassthrough": false,
+      "audioPassthrough": false,
+      "videoBitrate": 500,
+      "audioBitrate": 96,
+      "scaledWidth": 0,
+      "scaledHeight": 0,
+      "framerate": 24,
+      "cpuUsageLevel": 1
     }
   ]
 }
