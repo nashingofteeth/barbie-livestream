@@ -1,8 +1,8 @@
 ## Tonight's Feature
 
-**[Barbie as the Island Princess (2007)](https://boxd.it/1Quy)**
+**[Barbie as Rapunzel (2002)](https://boxd.it/1MZW)**
 
-Young Rosella is saved by a few kind animals after a shipwreck. Now called Ro, she learns to talk to animals. One day, she saves the life of a prince and returns to civilisation to discover her past.
+Barbie stars as Rapunzel, a young girl who is entrapped by a magical barrier by the wicked, Gothel. Rapunzel finds an escape where she finds a Prince and a feud between two kingdoms which goes back to the day she was kidnapped as a child.
 
 *Start time: 7pm PST*
 
@@ -33,3 +33,4 @@ Young Rosella is saved by a few kind animals after a shipwreck. Now called Ro, s
 - 01/04/2026 - [Barbie in a Christmas Carol (2008)](https://boxd.it/1Q8C)
 - 02/01/2026 - [Barbie Fairytopia: Mermaidia (2006)](https://boxd.it/1Que)
 - 02/22/2026 - [Barbie as The Princess & the Pauper (2004)](https://boxd.it/1MGU)
+- 03/08/2016 - [Barbie as the Island Princess (2007)](https://boxd.it/1Quy)
