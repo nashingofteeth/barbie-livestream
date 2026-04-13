@@ -1,8 +1,8 @@
 ## Tonight's Feature
 
-**[Barbie as Rapunzel (2002)](https://boxd.it/1MZW)**
+**[Barbie of Swan Lake (2003)](https://boxd.it/1MZM)**
 
-Barbie stars as Rapunzel, a young girl who is entrapped by a magical barrier by the wicked, Gothel. Rapunzel finds an escape where she finds a Prince and a feud between two kingdoms which goes back to the day she was kidnapped as a child.
+Barbie as Odette, the young daughter of a baker, follows a unicorn into the Enchanted Forest and is transformed into a swan by an evil wizard intent on defeating the Fairy Queen.
 
 *Start time: 7pm PST*
 
@@ -33,4 +33,5 @@ Barbie stars as Rapunzel, a young girl who is entrapped by a magical barrier by 
 - 01/04/2026 - [Barbie in a Christmas Carol (2008)](https://boxd.it/1Q8C)
 - 02/01/2026 - [Barbie Fairytopia: Mermaidia (2006)](https://boxd.it/1Que)
 - 02/22/2026 - [Barbie as The Princess & the Pauper (2004)](https://boxd.it/1MGU)
-- 03/08/2016 - [Barbie as the Island Princess (2007)](https://boxd.it/1Quy)
+- 03/08/2026 - [Barbie as the Island Princess (2007)](https://boxd.it/1Quy)
+- 03/29/2026 - [Barbie as Rapunzel (2002)](https://boxd.it/1MZW)
