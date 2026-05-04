@@ -1,8 +1,8 @@
 ## Tonight's Feature
 
-**[Barbie of Swan Lake (2003)](https://boxd.it/1MZM)**
+**[Barbie: Princess Charm School (2011)](https://boxd.it/2vLK)**
 
-Barbie as Odette, the young daughter of a baker, follows a unicorn into the Enchanted Forest and is transformed into a swan by an evil wizard intent on defeating the Fairy Queen.
+Blair, a waitress in the kingdom of Gardania, realises that she strongly resembles the region’s missing queen. She then gets to go to Princess Charm School and causes problems for the teacher.
 
 *Start time: 7pm PST*
 
@@ -35,3 +35,4 @@ Barbie as Odette, the young daughter of a baker, follows a unicorn into the Ench
 - 02/22/2026 - [Barbie as The Princess & the Pauper (2004)](https://boxd.it/1MGU)
 - 03/08/2026 - [Barbie as the Island Princess (2007)](https://boxd.it/1Quy)
 - 03/29/2026 - [Barbie as Rapunzel (2002)](https://boxd.it/1MZW)
+- 04/19/2026 - [Barbie of Swan Lake (2003)](https://boxd.it/1MZM)
