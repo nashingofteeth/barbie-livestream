@@ -1,8 +1,8 @@
 ## Tonight's Feature
 
-**[Barbie: Princess Charm School (2011)](https://boxd.it/2vLK)**
+**[Barbie in A Mermaid Tale (2010)](https://boxd.it/1ehc)**
 
-Blair, a waitress in the kingdom of Gardania, realises that she strongly resembles the region’s missing queen. She then gets to go to Princess Charm School and causes problems for the teacher.
+Barbie stars as Merliah, a surfer who learns a shocking secret: she’s a mermaid! She and her dolphin friend set out for an undersea adventure to rescue her mother, the queen of Oceana.
 
 *Start time: 7pm PST*
 
@@ -36,3 +36,4 @@ Blair, a waitress in the kingdom of Gardania, realises that she strongly resembl
 - 03/08/2026 - [Barbie as the Island Princess (2007)](https://boxd.it/1Quy)
 - 03/29/2026 - [Barbie as Rapunzel (2002)](https://boxd.it/1MZW)
 - 04/19/2026 - [Barbie of Swan Lake (2003)](https://boxd.it/1MZM)
+- 05/03/2026 - [Barbie: Princess Charm School (2011)](https://boxd.it/2vLK)
