@@ -1,8 +1,8 @@
 ## Tonight's Feature
 
-**[Barbie in A Mermaid Tale (2010)](https://boxd.it/1ehc)**
+**[Barbie in A Mermaid Tale 2 (2012)](https://boxd.it/3cYW)**
 
-Barbie stars as Merliah, a surfer who learns a shocking secret: she’s a mermaid! She and her dolphin friend set out for an undersea adventure to rescue her mother, the queen of Oceana.
+Merliah Summers, a mermaid from Oceana, travels to Australia for a surfing competition. But when she learns that the evil Eris is planning to take over her kingdom, she must stop her at any cost.
 
 *Start time: 7pm PST*
 
@@ -37,3 +37,4 @@ Barbie stars as Merliah, a surfer who learns a shocking secret: she’s a mermai
 - 03/29/2026 - [Barbie as Rapunzel (2002)](https://boxd.it/1MZW)
 - 04/19/2026 - [Barbie of Swan Lake (2003)](https://boxd.it/1MZM)
 - 05/03/2026 - [Barbie: Princess Charm School (2011)](https://boxd.it/2vLK)
+- 06/14/2026 - [Barbie in A Mermaid Tale (2010)](https://boxd.it/1ehc)
