@@ -1,8 +1,8 @@
 ## Tonight's Feature
 
-**[Barbie in A Mermaid Tale 2 (2012)](https://boxd.it/3cYW)**
+**[Barbie Video Game Hero (2017)](https://boxd.it/fqCE)**
 
-Merliah Summers, a mermaid from Oceana, travels to Australia for a surfing competition. But when she learns that the evil Eris is planning to take over her kingdom, she must stop her at any cost.
+When Barbie is accidentally pulled into her favourite game, she teams up with the roller skater Bella and her friend Cutie, to stop a mischievous emoji who is trying to take control of the game.
 
 *Start time: 7pm PST*
 
@@ -38,3 +38,4 @@ Merliah Summers, a mermaid from Oceana, travels to Australia for a surfing compe
 - 04/19/2026 - [Barbie of Swan Lake (2003)](https://boxd.it/1MZM)
 - 05/03/2026 - [Barbie: Princess Charm School (2011)](https://boxd.it/2vLK)
 - 06/14/2026 - [Barbie in A Mermaid Tale (2010)](https://boxd.it/1ehc)
+- 06/28/2026 - [Barbie in A Mermaid Tale 2 (2012)](https://boxd.it/3cYW)
