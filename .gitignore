@@ -6,8 +6,6 @@ data/
 !data/public/
 !data/public/images/
 !data/public/images/README.md
-!data/emoji/
-!data/emoji/EMOJI-GUIDE.md
 
 # Owncast database and config
 *.db

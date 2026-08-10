@@ -7,41 +7,68 @@
 @import url("https://fonts.googleapis.com/css2?family=Imperial+Script&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap");
 
 /* ========================================
+   SELECTOR TARGET INDEX
+   ---------------------
+   Header title/subtitle  : .header-title, #global-header-text
+   Offline banner         : #offline-banner
+   Video frame            : #video-container, #player
+   Video controls         : .video-js .vjs-*
+   Chat container         : #chat-container
+   Chat messages          : .chat-message_user/_system/_social
+   Modals                 : #modal-container
+   Followers              : .followers-follower
+   Page content           : #custom-page-content
+   Footer                 : footer
+   ======================================== */
+
+/* ========================================
    CSS VARIABLES - BARBIE COLOR PALETTE
    ======================================== */
 :root {
-  /* Primary Barbie Colors */
-  --theme-color-action: #ff69b4;
-  --theme-color-action-hover: #ff1493;
-  --theme-color-palette-0: #ff69b4; /* Hot Pink */
-  --theme-color-palette-1: #ff1493; /* Deep Pink */
-  --theme-color-palette-2: #ffb6c1; /* Light Pink */
-  --theme-color-palette-3: #ffd700; /* Gold */
-  --theme-color-palette-4: #fff0f5; /* Lavender Blush */
-  --theme-color-palette-5: #c71585; /* Medium Violet Red */
+  /* Core Barbie palette (single source of truth) */
+  --barbie-hot-pink: #ff69b4;
+  --barbie-deep-pink: #ff1493;
+  --barbie-rose: #c71585;
+  --barbie-dark-rose: #b0005c;
+  --barbie-light-pink: #ffb6c1;
+  --barbie-blush: #fff0f5;
+  --barbie-sand: #ffe4e1;
+  --barbie-gold: #ffd700;
+  --barbie-sand-gold: #ffca28;
+  --barbie-gold-light: #ffe9a8;
+
+  /* Owncast primary action color */
+  --theme-color-action: var(--barbie-hot-pink);
+  --theme-color-action-hover: var(--barbie-deep-pink);
+  --theme-color-palette-0: var(--barbie-hot-pink); /* Hot Pink */
+  --theme-color-palette-1: var(--barbie-deep-pink); /* Deep Pink */
+  --theme-color-palette-2: var(--barbie-light-pink); /* Light Pink */
+  --theme-color-palette-3: var(--barbie-gold); /* Gold */
+  --theme-color-palette-4: var(--barbie-blush); /* Lavender Blush */
+  --theme-color-palette-5: var(--barbie-rose); /* Medium Violet Red */
 
   /* Component Colors */
   --theme-color-components-primary-button-bg: linear-gradient(
     135deg,
-    #ff69b4 0%,
-    #ff1493 100%
+    var(--barbie-hot-pink) 0%,
+    var(--barbie-deep-pink) 100%
   );
-  --theme-color-components-primary-button-border: #ffd700;
+  --theme-color-components-primary-button-border: var(--barbie-gold);
   --theme-color-components-primary-button-text: #ffffff;
 
   /* Background and Text */
   --theme-color-background-main: linear-gradient(
     135deg,
-    #fff0f5 0%,
-    #ffe4e1 100%
+    var(--barbie-blush) 0%,
+    var(--barbie-sand) 100%
   );
   --theme-color-background-header: linear-gradient(
     135deg,
-    #ff69b4 0%,
-    #ff1493 50%,
-    #c71585 100%
+    var(--barbie-hot-pink) 0%,
+    var(--barbie-deep-pink) 50%,
+    var(--barbie-rose) 100%
   );
-  --theme-color-text-display: #c71585;
+  --theme-color-text-display: var(--barbie-rose);
   --theme-color-text-body: #333333;
 
   /* Fonts */
@@ -50,7 +77,7 @@
 
   /* Chat Colors */
   --theme-color-components-chat-background: rgba(255, 240, 245, 0.95);
-  --theme-color-components-chat-border: #ffb6c1;
+  --theme-color-components-chat-border: var(--barbie-light-pink);
   --theme-color-components-text-message-background-user: rgba(
     255,
     105,
@@ -63,6 +90,12 @@
     0,
     0.1
   );
+
+  /* Dreamhouse texture: subtle pink diamond + dot pattern */
+  --barbie-pattern-overlay: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23ff69b4' stroke-opacity='0'%3E%3Cpath d='M32 6 L58 32 L32 58 L6 32 Z' stroke='%23ff69b4' stroke-opacity='0.045'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23ff1493' fill-opacity='0.035'/%3E%3Ccircle cx='2' cy='2' r='3' fill='%23ffd700' fill-opacity='0.05'/%3E%3Ccircle cx='62' cy='62' r='3' fill='%23ffd700' fill-opacity='0.05'/%3E%3C/g%3E%3C/svg%3E");
+
+  /* Sparkle tint used by custom.js */
+  --barbie-sparkle-color: #ff69b4;
 }
 
 /* ========================================
@@ -70,9 +103,21 @@
    ======================================== */
 body {
   font-family: "Poppins", sans-serif !important;
-  background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%) !important;
+  background: var(--barbie-pattern-overlay), /* texture */
+    radial-gradient(1200px 520px at 50% 20%, rgba(255, 105, 180, 0.16), transparent 62%),
+    radial-gradient(900px 420px at 50% 72%, rgba(255, 215, 0, 0.08), transparent 60%),
+    linear-gradient(135deg, var(--barbie-blush) 0%, var(--barbie-sand) 100%) !important;
   background-attachment: fixed !important;
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 2 L2 18 L7 13 L11 19 L13 18 L9 12 L16 11 Z" fill="%23FF69B4" stroke="%23FF1493" stroke-width="1"/></svg>') 2 2, auto;
+}
+
+/* Focus visibility (accessibility) */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--barbie-gold) !important;
+  outline-offset: 2px !important;
 }
 
 /* ========================================
@@ -81,12 +126,12 @@ body {
 header {
   background: linear-gradient(
     135deg,
-    #ff69b4 0%,
-    #ff1493 50%,
-    #c71585 100%
+    var(--barbie-hot-pink) 0%,
+    var(--barbie-deep-pink) 50%,
+    var(--barbie-rose) 100%
   ) !important;
   box-shadow: 0 4px 20px rgba(255, 20, 147, 0.3) !important;
-  border-bottom: 3px solid #ffd700 !important;
+  border-bottom: 3px solid var(--barbie-gold) !important;
 }
 
 #global-header-text {
@@ -96,40 +141,66 @@ header {
 .header-title {
   font-size: 2.3rem !important;
   letter-spacing: 0.05em !important;
+  font-family: "Playfair Display", serif !important;
+  font-weight: 700 !important;
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    var(--barbie-gold-light) 25%,
+    #ffffff 50%,
+    var(--barbie-gold-light) 75%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: wordmark-shimmer 7s linear infinite;
 }
+
 .header-title, .header-subtitle {
   margin-top: auto !important;
 }
-.ContentHeader_tagList__tmdbo {
+
+/* Hide tag list under the header title (renamed Owncast class, future-safe) */
+.content-header-tag-list {
   display: none;
 }
 
 /* ========================================
-   OFFLINE BANNER
+   OFFLINE BANNER - NEON DREAMHOUSE SIGN
    ======================================== */
 #offline-banner {
   background: linear-gradient(
     135deg,
-    #ff69b4 20%,
-    #ff1493 60%,
-    #c71585 100%
+    var(--barbie-hot-pink) 20%,
+    var(--barbie-deep-pink) 60%,
+    var(--barbie-rose) 100%
   ) !important;
-  border: 3px solid #ffd700 !important;
+  border: 3px solid var(--barbie-gold) !important;
   border-radius: 15px !important;
-  box-shadow: 0 8px 32px rgba(255, 20, 147, 0.4), inset 0 0 20px rgba(255, 215, 0, 0.2) !important;
   margin: 1.5vw 2vw 1vw 2vw;
+  animation: neon-pulse 3s ease-in-out infinite;
 }
 
 /* ========================================
-   BUTTONS
+   BUTTONS - GLOSSY PILLS
    ======================================== */
 button,
 .button,
 #follow-button {
-  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--barbie-hot-pink) 0%,
+    var(--barbie-deep-pink) 100%
+  ) !important;
   color: #ffffff !important;
   font-family: "Poppins", sans-serif !important;
   font-weight: 600 !important;
+  border: 2px solid var(--barbie-gold) !important;
+  border-radius: 999px !important;
+  position: relative !important;
+  overflow: hidden !important;
   transition: all 0.3s ease !important;
   cursor: pointer !important;
 }
@@ -137,7 +208,40 @@ button,
 button:hover,
 .button:hover,
 #follow-button:hover {
-  background: linear-gradient(135deg, #ff1493 0%, #c71585 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--barbie-deep-pink) 0%,
+    var(--barbie-rose) 100%
+  ) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(255, 20, 147, 0.4) !important;
+}
+
+/* Shine sweep across the pill on hover */
+button::after,
+.button::after,
+#follow-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+button:hover::after,
+.button:hover::after,
+#follow-button:hover::after {
+  left: 150%;
+  transition: left 0.7s ease;
 }
 
 /* Hide notification button (disabled via API config) */
@@ -146,11 +250,11 @@ button:hover,
 }
 
 /* ========================================
-   CHAT CONTAINER
+   CHAT CONTAINER (chat is disabled via config)
    ======================================== */
 #chat-container {
   background: rgba(255, 240, 245, 0.95) !important;
-  border: 2px solid #ffb6c1 !important;
+  border: 2px solid var(--barbie-light-pink) !important;
   border-radius: 15px !important;
   box-shadow: 0 4px 20px rgba(255, 105, 180, 0.2) !important;
   backdrop-filter: blur(10px) !important;
@@ -159,28 +263,46 @@ button:hover,
 /* Chat Messages */
 .chat-message_user {
   background: rgba(255, 105, 180, 0.1) !important;
-  border-left: 3px solid #ff69b4 !important;
+  border-left: 3px solid var(--barbie-hot-pink) !important;
   border-radius: 10px !important;
 }
 
 .chat-message_system {
   background: rgba(255, 215, 0, 0.1) !important;
-  border-left: 3px solid #ffd700 !important;
+  border-left: 3px solid var(--barbie-gold) !important;
   border-radius: 10px !important;
   font-style: italic !important;
 }
 
 .chat-message_social {
   background: rgba(199, 21, 133, 0.1) !important;
-  border-left: 3px solid #c71585 !important;
+  border-left: 3px solid var(--barbie-rose) !important;
   border-radius: 10px !important;
 }
 
 /* ========================================
-   VIDEO PLAYER
+   VIDEO PLAYER - GOLD MARQUEE FRAME
    ======================================== */
+#video-container {
+  position: relative !important;
+  border-radius: 22px !important;
+  padding: 12px !important;
+  background-image:
+    radial-gradient(circle at 50% 100%, var(--barbie-gold) 13px, transparent 14px),
+    linear-gradient(180deg, var(--barbie-gold-light) 0%, var(--barbie-gold) 55%, var(--barbie-sand-gold) 100%);
+  background-size: 26px 15px, 100% 100%;
+  background-repeat: repeat-x, no-repeat;
+  background-position: center top, 0 0;
+  box-shadow:
+    0 0 0 5px rgba(255, 255, 255, 0.75),
+    0 0 0 8px var(--barbie-gold),
+    0 14px 44px rgba(255, 20, 147, 0.35),
+    0 0 46px rgba(255, 215, 0, 0.35);
+}
+
 #player {
-  box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
   position: relative !important;
   z-index: 10 !important;
 }
@@ -192,7 +314,7 @@ button:hover,
     rgba(255, 105, 180, 0.8) 0%,
     rgba(255, 20, 147, 0.9) 100%
   ) !important;
-  border-top: 2px solid #ffd700 !important;
+  border-top: 2px solid var(--barbie-gold) !important;
 }
 
 .video-js .vjs-play-control,
@@ -204,7 +326,7 @@ button:hover,
 .video-js .vjs-play-control:hover,
 .video-js .vjs-volume-panel:hover,
 .video-js .vjs-fullscreen-control:hover {
-  color: #ffd700 !important;
+  color: var(--barbie-gold) !important;
 }
 
 .video-js .vjs-progress-control .vjs-progress-holder {
@@ -212,7 +334,7 @@ button:hover,
 }
 
 .video-js .vjs-progress-control .vjs-play-progress {
-  background: #ffd700 !important;
+  background: var(--barbie-gold) !important;
 }
 
 /* ========================================
@@ -223,8 +345,12 @@ button:hover,
 }
 
 #modal-container > div {
-  background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%) !important;
-  border: 3px solid #ff69b4 !important;
+  background: linear-gradient(
+    135deg,
+    var(--barbie-blush) 0%,
+    var(--barbie-sand) 100%
+  ) !important;
+  border: 3px solid var(--barbie-hot-pink) !important;
   border-radius: 20px !important;
   box-shadow: 0 12px 48px rgba(255, 20, 147, 0.4) !important;
 }
@@ -234,14 +360,14 @@ button:hover,
    ======================================== */
 .followers-follower {
   background: rgba(255, 240, 245, 0.8) !important;
-  border: 2px solid #ffb6c1 !important;
+  border: 2px solid var(--barbie-light-pink) !important;
   border-radius: 10px !important;
   transition: all 0.3s ease !important;
 }
 
 .followers-follower:hover {
   background: rgba(255, 182, 193, 0.3) !important;
-  border-color: #ff69b4 !important;
+  border-color: var(--barbie-hot-pink) !important;
   transform: translateY(-3px) !important;
   box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3) !important;
 }
@@ -258,34 +384,110 @@ button:hover,
 #custom-page-content h2,
 #custom-page-content h3 {
   font-family: "Playfair Display", serif !important;
-  color: #c71585 !important;
+  color: var(--barbie-rose) !important;
   text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.3) !important;
 }
 
 #custom-page-content h2 {
   font-size: 2rem !important;
+  border-bottom: 2px dashed var(--barbie-light-pink) !important;
+  padding-bottom: 0.35em !important;
 }
 
+#custom-page-content h3 {
+  font-size: 1.4rem !important;
+  color: var(--barbie-deep-pink) !important;
+}
+
+/* Links: darker rose for WCAG contrast on the light-pink bg */
 #custom-page-content a {
-  color: #ff1493 !important;
+  color: var(--barbie-dark-rose) !important;
   text-decoration: none !important;
-  border-bottom: 2px solid #ffb6c1 !important;
+  border-bottom: 2px solid var(--barbie-light-pink) !important;
   transition: all 0.3s ease !important;
 }
 
 #custom-page-content a:hover {
-  color: #c71585 !important;
-  border-bottom-color: #ff69b4 !important;
+  color: var(--barbie-rose) !important;
+  border-bottom-color: var(--barbie-hot-pink) !important;
+}
+
+/* Feature card and screenings table (see config/page-content.md) */
+#custom-page-content hr {
+  border: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--barbie-gold),
+    var(--barbie-hot-pink),
+    var(--barbie-gold),
+    transparent
+  ) !important;
+  border-radius: 2px !important;
+  margin: 2.5em 0 !important;
+}
+
+#custom-page-content blockquote {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 105, 180, 0.08) 0%,
+    rgba(255, 215, 0, 0.05) 100%
+  ) !important;
+  border-left: 4px solid var(--barbie-gold) !important;
+  border-radius: 0 12px 12px 0 !important;
+  padding: 0.75em 1.25em !important;
+  margin: 1.5em 0 !important;
+  box-shadow: 0 4px 16px rgba(255, 105, 180, 0.12) !important;
+}
+
+#custom-page-content table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-family: "Poppins", sans-serif !important;
+  box-shadow: 0 4px 20px rgba(255, 105, 180, 0.12) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+#custom-page-content th {
+  background: linear-gradient(
+    135deg,
+    var(--barbie-hot-pink) 0%,
+    var(--barbie-deep-pink) 100%
+  ) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  padding: 0.6em 1em !important;
+  text-align: left !important;
+  border: none !important;
+}
+
+#custom-page-content td {
+  padding: 0.55em 1em !important;
+  border-bottom: 1px solid rgba(255, 182, 193, 0.4) !important;
+}
+
+#custom-page-content tr:nth-child(even) td {
+  background: rgba(255, 240, 245, 0.6) !important;
+}
+
+#custom-page-content tr:hover td {
+  background: rgba(255, 182, 193, 0.15) !important;
 }
 
 /* ========================================
    FOOTER
    ======================================== */
 footer {
-  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%) !important;
+  background: linear-gradient(
+    135deg,
+    var(--barbie-hot-pink) 0%,
+    var(--barbie-deep-pink) 100%
+  ) !important;
   color: #ffffff !important;
   text-align: center !important;
-  border-top: 3px solid #ffd700 !important;
+  border-top: 3px solid var(--barbie-gold) !important;
   box-shadow: 0 -4px 20px rgba(255, 20, 147, 0.3) !important;
   margin-top: 1vw;
 }
@@ -297,6 +499,16 @@ footer a[href*="github.com/owncast"] {
   display: none !important;
 }
 
+/* Tagline injected by custom.js */
+.barbie-footer-tagline {
+  font-family: "Imperial Script", cursive !important;
+  font-size: 1.4rem !important;
+  color: var(--barbie-gold-light) !important;
+  letter-spacing: 0.06em !important;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6) !important;
+  margin-top: 0.6em !important;
+}
+
 /* ========================================
    SCROLLBAR STYLING (Webkit browsers)
    ======================================== */
@@ -305,25 +517,36 @@ footer a[href*="github.com/owncast"] {
 }
 
 ::-webkit-scrollbar-track {
-  background: #fff0f5;
+  background: var(--barbie-blush);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  background: linear-gradient(
+    135deg,
+    var(--barbie-hot-pink) 0%,
+    var(--barbie-deep-pink) 100%
+  );
   border-radius: 10px;
-  border: 2px solid #fff0f5;
+  border: 2px solid var(--barbie-blush);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #ff1493 0%, #c71585 100%);
+  background: linear-gradient(
+    135deg,
+    var(--barbie-deep-pink) 0%,
+    var(--barbie-rose) 100%
+  );
 }
 
 /* ========================================
-   RESPONSIVE ADJUSTMENTS
+   HIDE STREAM STATUS BAR
    ======================================== */
-@media (max-width: 768px) {
-  /* Responsive adjustments removed to preserve default sizing */
+/* Viewer count / live duration (broad selectors kept future-safe) */
+#stream-info,
+.stream-info,
+.online-status-bar {
+  display: none !important;
 }
 
 /* ========================================
@@ -338,6 +561,12 @@ footer a[href*="github.com/owncast"] {
   }
 }
 
+@keyframes wordmark-shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
 @keyframes glow {
   0%,
   100% {
@@ -347,6 +576,23 @@ footer a[href*="github.com/owncast"] {
     box-shadow:
       0 0 20px rgba(255, 215, 0, 0.8),
       0 0 30px rgba(255, 105, 180, 0.6);
+  }
+}
+
+/* Offline banner neon flicker */
+@keyframes neon-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px rgba(255, 215, 0, 0.55),
+      inset 0 0 18px rgba(255, 215, 0, 0.22),
+      0 8px 32px rgba(255, 20, 147, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 32px rgba(255, 215, 0, 0.95),
+      inset 0 0 30px rgba(255, 215, 0, 0.45),
+      0 8px 48px rgba(255, 20, 147, 0.6);
   }
 }
 
@@ -405,21 +651,7 @@ button:focus,
 }
 
 /* ========================================
-   HIDE STATUS BAR
-   ======================================== */
-/* Hide stream status bar with live duration and viewer count */
-#stream-info,
-.stream-info,
-.online-status-bar,
-[class*="statusbar"],
-[class*="StreamInfo"],
-div[class*="online"] > div:has(.viewer-count),
-.viewer-count-container {
-  display: none !important;
-}
-
-/* ========================================
-   SPARKLES
+   SPARKLES (elements created by custom.js)
    ======================================== */
 .sparkle {
   position: fixed;
@@ -441,5 +673,16 @@ div[class*="online"] > div:has(.viewer-count),
   font-size: 20px;
   animation: sparkle-twinkle 1.5s ease-in-out infinite;
   display: inline-block;
+  text-shadow:
+    0 0 8px var(--barbie-sparkle-color),
+    0 0 16px rgba(255, 105, 180, 0.65);
 }
 
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1.7rem !important;
+  }
+}

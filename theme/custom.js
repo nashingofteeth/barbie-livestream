@@ -4,8 +4,9 @@
   /** ========================================
    *  SPARKLE MANAGER
    *  Two types: falling from top + cursor-generated
+   *  Variety: hearts, stars, butterflies, blossoms
    *  ======================================== */
-  
+
   const CONFIG = {
     // Ambient sparkles (falling from top)
     maxAmbientSparkles: 15,
@@ -14,7 +15,7 @@
     ambientMaxDuration: 7000,
     ambientMinDrift: -30,
     ambientMaxDrift: 30,
-    
+
     // Cursor sparkles
     maxCursorSparkles: 30,
     cursorSpawnThrottle: 80, // ms between cursor sparkles
@@ -26,6 +27,9 @@
     cursorMinVelocityY: 30,
     cursorMaxVelocityY: 100,
     cursorGravity: 0.5,
+
+    // Barbie sparkle glyphs (picked at random)
+    sparkleEmojis: ['✨', '💗', '💖', '🌸', '🦋', '👑', '⭐', '💫'],
   };
 
   class SparkleManager {
@@ -35,10 +39,16 @@
       this.isRunning = false;
       this.ambientTimer = null;
       this.lastCursorSpawnTime = 0;
+      this.pendingCursorFrame = false;
       this.videoContainer = null;
     }
 
     init() {
+      // Respect reduced-motion preference (accessibility)
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
       // Wait for DOM to be ready
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => this.start());
@@ -50,20 +60,48 @@
     start() {
       this.isRunning = true;
       this.videoContainer = document.querySelector('#video-container');
-      
+      this.injectFooterTagline();
+
       // Start ambient sparkles
       this.scheduleNextAmbientSparkle();
-      
-      // Track mouse movement for cursor sparkles
+
+      // Track mouse movement for cursor sparkles (rAF-throttled)
       document.addEventListener('mousemove', (e) => {
-        const now = Date.now();
-        if (now - this.lastCursorSpawnTime > CONFIG.cursorSpawnThrottle) {
-          if (this.cursorSparkles.length < CONFIG.maxCursorSparkles) {
-            this.createCursorSparkle(e.clientX, e.clientY);
-          }
-          this.lastCursorSpawnTime = now;
-        }
+        if (this.pendingCursorFrame) return;
+        this.pendingCursorFrame = true;
+        requestAnimationFrame(() => {
+          this.pendingCursorFrame = false;
+          this.handleCursorMove(e.clientX, e.clientY);
+        });
       });
+    }
+
+    handleCursorMove(x, y) {
+      const now = Date.now();
+      if (now - this.lastCursorSpawnTime > CONFIG.cursorSpawnThrottle) {
+        if (this.cursorSparkles.length < CONFIG.maxCursorSparkles) {
+          this.createCursorSparkle(x, y);
+        }
+        this.lastCursorSpawnTime = now;
+      }
+    }
+
+    /** Inject a small Barbie tagline into the footer */
+    injectFooterTagline() {
+      const footer = document.querySelector('footer');
+      if (!footer) return;
+      const existing = footer.querySelector('.barbie-footer-tagline');
+      if (existing) return;
+
+      const tagline = document.createElement('div');
+      tagline.className = 'barbie-footer-tagline';
+      tagline.textContent = 'Made with 💖 in the Dreamhouse 🎀';
+      footer.appendChild(tagline);
+    }
+
+    randomEmoji() {
+      const glyphs = CONFIG.sparkleEmojis;
+      return glyphs[Math.floor(Math.random() * glyphs.length)];
     }
 
     scheduleNextAmbientSparkle() {
@@ -81,16 +119,16 @@
       // Create wrapper for position animation
       const sparkle = document.createElement('div');
       sparkle.className = 'sparkle sparkle-ambient';
-      
+
       // Create inner element for twinkle animation
       const sparkleInner = document.createElement('span');
       sparkleInner.className = 'sparkle-inner';
-      sparkleInner.textContent = '✨';
+      sparkleInner.textContent = this.randomEmoji();
       sparkle.appendChild(sparkleInner);
 
       // Random position across viewport width
       const x = Math.random() * (window.innerWidth - 30);
-      
+
       // Check if position overlaps with video player
       if (this.isOverVideoPlayer(x)) {
         return; // Skip this sparkle
@@ -98,7 +136,7 @@
 
       // Random animation duration
       const duration = CONFIG.ambientMinDuration + Math.random() * (CONFIG.ambientMaxDuration - CONFIG.ambientMinDuration);
-      
+
       // Random horizontal drift
       const drift = CONFIG.ambientMinDrift + Math.random() * (CONFIG.ambientMaxDrift - CONFIG.ambientMinDrift);
 
@@ -122,11 +160,11 @@
       // Create wrapper for position animation
       const sparkle = document.createElement('div');
       sparkle.className = 'sparkle sparkle-cursor';
-      
+
       // Create inner element for twinkle animation
       const sparkleInner = document.createElement('span');
       sparkleInner.className = 'sparkle-inner';
-      sparkleInner.textContent = '✨';
+      sparkleInner.textContent = this.randomEmoji();
       sparkle.appendChild(sparkleInner);
 
       // Add random offset from cursor position
@@ -137,11 +175,11 @@
 
       // Random animation duration
       const duration = CONFIG.cursorMinDuration + Math.random() * (CONFIG.cursorMaxDuration - CONFIG.cursorMinDuration);
-      
+
       // Random velocity (direction and speed of fall)
       const velocityX = CONFIG.cursorMinVelocityX + Math.random() * (CONFIG.cursorMaxVelocityX - CONFIG.cursorMinVelocityX);
       const velocityY = CONFIG.cursorMinVelocityY + Math.random() * (CONFIG.cursorMaxVelocityY - CONFIG.cursorMinVelocityY);
-      
+
       // Calculate end position based on velocity and gravity
       const durationSec = duration / 1000;
       const endX = startX + (velocityX * durationSec);
@@ -171,7 +209,7 @@
 
       const rect = this.videoContainer.getBoundingClientRect();
       const sparkleWidth = 30; // approximate width of emoji
-      
+
       // Check if sparkle's horizontal position would overlap video
       return x >= rect.left && x <= (rect.right + sparkleWidth);
     }
@@ -192,7 +230,7 @@
       if (this.ambientTimer) {
         clearTimeout(this.ambientTimer);
       }
-      
+
       // Clean up existing sparkles
       [...this.ambientSparkles, ...this.cursorSparkles].forEach(sparkle => {
         if (sparkle.parentNode) {

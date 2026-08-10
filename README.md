@@ -6,7 +6,7 @@ A Barbie-themed Owncast server for hosting 2000s movie watch parties with automa
 
 - Pink Dreamhouse aesthetic with sparkle effects
 - Automated setup via configuration files
-- Custom Barbie-themed lobby page with sparkles and links
+- Optional Barbie-themed lobby landing page (see `lobby/`)
 - Docker-based deployment
 - OBS streaming integration
 
@@ -16,16 +16,16 @@ A Barbie-themed Owncast server for hosting 2000s movie watch parties with automa
 ./start.sh
 ```
 
-Access your stream at http://localhost:8080
+Access your stream at http://localhost:2001
 
 **First time setup:**
-1. Change admin password at http://localhost:8080/admin (default: `admin`/`abc123`)
+1. Change admin password at http://localhost:2001/admin (default: `admin`/`abc123`)
 2. Update password in `.env` file to match
 
 ## Requirements
 
 - Docker and Docker Compose
-- Ports 8080 and 1935 available
+- Ports 2001 and 1935 available
 - bash, curl (standard on most systems)
 
 ## Project Structure
@@ -43,8 +43,9 @@ barbie-livestream/
 ├── theme/
 │   ├── custom.css              # Barbie theme CSS
 │   ├── custom.js               # Sparkle effects
-│   └── logo.png                # Server logo
-├── lobby/
+│   ├── logo.png                # Server logo
+│   └── emoji/                  # Custom chat emoji images
+├── lobby/                      # (optional) Landing page - not yet created
 │   └── index.html              # Landing page
 └── data/                       # Owncast data (persisted)
 ```
@@ -185,7 +186,7 @@ Add your video source, then click "Start Streaming"
 # Find your IP
 ifconfig | grep "inet "
 
-# Share: http://YOUR_IP:8080
+# Share: http://YOUR_IP:2001
 ```
 
 **Internet hosting:**

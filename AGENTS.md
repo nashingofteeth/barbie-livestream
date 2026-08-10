@@ -193,11 +193,11 @@ fi
 - `.env` - Credentials (NOT in git, use `.env.example` template)
 
 **Frontend:**
-- `lobby/index.html` - Landing page with sparkles, links to stream
+- `lobby/index.html` - Optional landing page (not yet created) - sparkles, links to stream
 
 **Data (Persisted):**
 - `data/` - Owncast data volume (database, recordings, etc.)
-- `data/emoji/` - Custom emoji images for chat
+- `theme/emoji/` - Custom emoji images for chat
 - `data/public/images/` - User-uploaded assets (logo, backgrounds)
 
 **Documentation:**
@@ -245,7 +245,7 @@ curl -s -w "\n%{http_code}" -X POST \
 
 ## Owncast API Reference
 
-**Base URL:** `http://localhost:8080/api/admin/config/`
+**Base URL:** `http://localhost:2001/api/admin/config/`
 
 **Authentication:** HTTP Basic Auth (username: `admin`, password from `.env`)
 
@@ -363,7 +363,7 @@ When making code changes, focus on the code itself. Documentation updates requir
 2. Check logs: `docker-compose logs -f`
 3. Validate JSON: `python3 -m json.tool < config/server-settings.json`
 4. Check bash syntax: `bash -n scripts/setup-config.sh`
-5. Test API manually: `curl -u admin:password http://localhost:8080/api/status`
+5. Test API manually: `curl -u admin:password http://localhost:2001/api/status`
 
 ## Architecture Notes
 
@@ -427,10 +427,10 @@ All users
 **Environment Variables** (defined in `.env`):
 - `OWNCAST_ADMIN_USER` - Admin username (default: "admin")
 - `OWNCAST_ADMIN_PASSWORD` - Admin password (must match Owncast)
-- `OWNCAST_URL` - Base URL (default: "http://localhost:8080")
+- `OWNCAST_URL` - Base URL (default: "http://localhost:2001")
 
 **Port Configuration:**
-- **8080**: Owncast web UI, admin panel, API
+- **2001**: Owncast web UI, admin panel, API (host port; container listens on 8080)
 - **1935**: RTMP ingest for OBS streaming
 
 ## Dependencies
