@@ -1,8 +1,8 @@
 ## Tonight's Feature
 
-**[Barbie Video Game Hero (2017)](https://boxd.it/fqCE)**
+**[The Barbie Diaries (2006)](https://boxd.it/1Bw0)**
 
-When Barbie is accidentally pulled into her favourite game, she teams up with the roller skater Bella and her friend Cutie, to stop a mischievous emoji who is trying to take control of the game.
+Barbie is disheartened when Todd breaks her heart and goes back to his former girlfriend. But things change when she comes across a diary, which makes her wishes come true.
 
 *Start time: 7pm PST*
 
@@ -39,3 +39,4 @@ When Barbie is accidentally pulled into her favourite game, she teams up with th
 - 05/03/2026 - [Barbie: Princess Charm School (2011)](https://boxd.it/2vLK)
 - 06/14/2026 - [Barbie in A Mermaid Tale (2010)](https://boxd.it/1ehc)
 - 06/28/2026 - [Barbie in A Mermaid Tale 2 (2012)](https://boxd.it/3cYW)
+- 07/26/2026 - [Barbie Video Game Hero (2017)](https://boxd.it/fqCE)
