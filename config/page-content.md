@@ -1,8 +1,8 @@
 ## Tonight's Feature
 
-**[The Barbie Diaries (2006)](https://boxd.it/1Bw0)**
+**[Barbie and the Diamond Castle (2008)](https://boxd.it/1R2K)**
 
-Barbie is disheartened when Todd breaks her heart and goes back to his former girlfriend. But things change when she comes across a diary, which makes her wishes come true.
+Liana and Alexa are best friends who share everything, including their love of singing. Upon meeting a girl inside a mirror, the duo embark on a journey that will put their friendship to the ultimate test.
 
 *Start time: 7pm PST*
 
@@ -40,3 +40,4 @@ Barbie is disheartened when Todd breaks her heart and goes back to his former gi
 - 06/14/2026 - [Barbie in A Mermaid Tale (2010)](https://boxd.it/1ehc)
 - 06/28/2026 - [Barbie in A Mermaid Tale 2 (2012)](https://boxd.it/3cYW)
 - 07/26/2026 - [Barbie Video Game Hero (2017)](https://boxd.it/fqCE)
+- 08/09/2026 - [The Barbie Diaries (2006)](https://boxd.it/1Bw0)
