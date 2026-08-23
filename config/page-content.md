@@ -1,10 +1,14 @@
-## Tonight's Feature
+## Tonight's Double Feature
 
-**[Barbie and the Diamond Castle (2008)](https://boxd.it/1R2K)**
+**[Barbie: The Princess & the Popstar (2012)](https://boxd.it/4eci)**
 
-Liana and Alexa are best friends who share everything, including their love of singing. Upon meeting a girl inside a mirror, the duo embark on a journey that will put their friendship to the ultimate test.
+Tori is a blonde princess who is bored of living her royal life, and has dreams of becoming a popstar. Keira, on the other hand, is a brunette popstar who dreams of being a princess. When the two meet, they magically trade places, but after realising it is best to be themselves.
 
-*Start time: 7pm PST*
+**[VeggieTales: Princess and the Popstar (2011)](https://boxd.it/8mai)**
+
+Princess Poppyseed’s life on her family’s farm is far from the glamorous but lonely world of her favorite pop singer Vanna Banana. On a chance meeting at a playground, Vanna and Princess cross paths and discover they look almost exactly alike-which leads to a crazy secret plan where they decide to switch lives! As each girl realizes that the life they longed for doesn’t fulfill all their dreams, they learn the life God gave them is the one for which they were uniquely and lovingly designed.
+
+*Start time: 6pm PST*
 
 ## Rules
 
@@ -41,3 +45,4 @@ Liana and Alexa are best friends who share everything, including their love of s
 - 06/28/2026 - [Barbie in A Mermaid Tale 2 (2012)](https://boxd.it/3cYW)
 - 07/26/2026 - [Barbie Video Game Hero (2017)](https://boxd.it/fqCE)
 - 08/09/2026 - [The Barbie Diaries (2006)](https://boxd.it/1Bw0)
+- 08/16/2026 - [Barbie and the Diamond Castle (2008)](https://boxd.it/1R2K)
