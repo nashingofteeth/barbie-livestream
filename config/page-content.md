@@ -1,8 +1,8 @@
 ## Tonight's Double Feature
 
-**[Barbie Fairytopia - Magic of the Rainbow (2007)](https://boxd.it/1Jri)**
+**[Barbie and the Secret Door (2014)](https://boxd.it/8R2k)**
 
-Elina goes to a fairy school to learn dancing and fairy magic. The spring of the fairy land is soon threatened by evil Laverna who intends to prevent fairies from performing the annual vital rainbow dance. Elina must stop quarreling with her fellow students and unite them to save the first bud of the spring.
+A shy princess discovers a secret door in her kingdom and enters a magical world full of magical creatures. She meets a mermaid and a fairy who tell her about a spoiled ruler threatening them.
 
 *Start time: 7pm PST*
 
@@ -43,3 +43,4 @@ Elina goes to a fairy school to learn dancing and fairy magic. The spring of the
 - 08/09/2026 - [The Barbie Diaries (2006)](https://boxd.it/1Bw0)
 - 08/16/2026 - [Barbie and the Diamond Castle (2008)](https://boxd.it/1R2K)
 - 08/23/2026 - [Barbie: The Princess & the Popstar (2012)](https://boxd.it/4eci) & [VeggieTales: Princess and the Popstar (2011)](https://boxd.it/8mai)
+- 09/06/2026 - [Barbie Fairytopia - Magic of the Rainbow (2007)](https://boxd.it/1Jri)
