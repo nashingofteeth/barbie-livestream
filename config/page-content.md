@@ -1,8 +1,8 @@
 ## Tonight's Double Feature
 
-**[Barbie and the Secret Door (2014)](https://boxd.it/8R2k)**
+**[Barbie in the Pink Shoes (2013)](https://boxd.it/5dRG)**
 
-A shy princess discovers a secret door in her kingdom and enters a magical world full of magical creatures. She meets a mermaid and a fairy who tell her about a spoiled ruler threatening them.
+About a young girl who finds a pair of pink ballet shoes and is taken to a magical ballet land.There she learns how to help her friends and follow her instincts.
 
 *Start time: 7pm PST*
 
@@ -44,3 +44,4 @@ A shy princess discovers a secret door in her kingdom and enters a magical world
 - 08/16/2026 - [Barbie and the Diamond Castle (2008)](https://boxd.it/1R2K)
 - 08/23/2026 - [Barbie: The Princess & the Popstar (2012)](https://boxd.it/4eci) & [VeggieTales: Princess and the Popstar (2011)](https://boxd.it/8mai)
 - 09/06/2026 - [Barbie Fairytopia - Magic of the Rainbow (2007)](https://boxd.it/1Jri)
+- 10/04/2026 - [Barbie and the Secret Door (2014)](https://boxd.it/8R2k)
